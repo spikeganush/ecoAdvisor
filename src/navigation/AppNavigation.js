@@ -6,6 +6,7 @@ import { AccountScreen } from "../screens/AccountScreen";
 import { SearchScreen } from "../screens/SearchScreen";
 import { Icon } from "react-native-elements";
 import { screen } from "../utils";
+//prueba
 const Tab = createBottomTabNavigator();
 
 export function AppNavigation() {
