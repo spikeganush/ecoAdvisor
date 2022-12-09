@@ -1,11 +1,17 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { RestaurantsScreen } from "../screens/RestaurantsScreen";
-import { FavoritesScreen } from "../screens/FavoritesScreen";
+import { Icon } from "react-native-elements";
+import { screen } from "../utils";
+import { RestaurantStack } from "./RestaurantStack";
+import { FavoritesStack } from "./FavoritesStack";
+import { SearchStack } from "./SearchStack";
+import { RankingStack } from "./RankingStack";
+import { AccountStack } from "./AccountStack";
+
 import { RankingScreen } from "../screens/RankingScreen";
 import { AccountScreen } from "../screens/AccountScreen";
 import { SearchScreen } from "../screens/SearchScreen";
-import { Icon } from "react-native-elements";
-import { screen } from "../utils";
+import { rankingStack } from "./RankingStack";
+
 const Tab = createBottomTabNavigator();
 
 export function AppNavigation() {
@@ -15,31 +21,32 @@ export function AppNavigation() {
         tabBarActiveTintColor: "#00a680",
         tabBarInactiveTintColor: "#646464",
         tabBarIcon: ({ color, size }) => screenOptions(route, color, size),
+        headerShown: false,
       })}
     >
       <Tab.Screen
         name={screen.restaurant.tab}
-        component={RestaurantsScreen}
+        component={RestaurantStack}
         options={{ title: "Restaurants" }}
       />
       <Tab.Screen
         name={screen.favorites.tab}
-        component={FavoritesScreen}
+        component={FavoritesStack}
         options={{ title: "Favorites" }}
       />
       <Tab.Screen
         name={screen.ranking.tab}
-        component={RankingScreen}
+        component={RankingStack}
         options={{ title: "Ranking" }}
       />
       <Tab.Screen
         name={screen.search.tab}
-        component={SearchScreen}
+        component={SearchStack}
         options={{ title: "Search" }}
       />
       <Tab.Screen
         name={screen.account.tab}
-        component={AccountScreen}
+        component={AccountStack}
         options={{ title: "Account" }}
       />
     </Tab.Navigator>
