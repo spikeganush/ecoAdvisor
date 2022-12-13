@@ -12,7 +12,7 @@ export function AccountScreen() {
       setHasLogged(user ? true : false);
     });
   }, []);
-  if (hasLogged === null) return <LoadingModal show text="Cargando..." />;
+  if (hasLogged === null) return <LoadingModal show text="Loading..." />;
 
   {
     return hasLogged ? <UserLoggedScreen /> : <UserGuestScreen />;
