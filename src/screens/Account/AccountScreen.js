@@ -9,7 +9,7 @@ export function AccountScreen() {
   useEffect(() => {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
-      //setHasLogged(user ? true : false);
+      setHasLogged(user ? true : false);
     });
   }, []);
   if (hasLogged === null) return <LoadingModal show text="Loading..." />;
