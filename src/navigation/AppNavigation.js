@@ -8,7 +8,7 @@ import { RankingStack } from "./RankingStack";
 import { AccountStack } from "./AccountStack";
 
 import { RankingScreen } from "../screens/RankingScreen";
-import { AccountScreen } from "../screens/AccountScreen";
+import { AccountScreen } from "../screens/Account/AccountScreen";
 import { SearchScreen } from "../screens/SearchScreen";
 import { rankingStack } from "./RankingStack";
 
