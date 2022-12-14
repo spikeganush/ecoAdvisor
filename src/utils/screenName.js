@@ -18,6 +18,7 @@ const searchStack = {
 const accountStack = {
   tab: "AccountTab",
   account: "Account",
+  login: "Login",
 };
 export const screen = {
   restaurant: restaurantStack,
