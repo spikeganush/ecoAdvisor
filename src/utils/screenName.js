@@ -19,6 +19,7 @@ const accountStack = {
   tab: "AccountTab",
   account: "Account",
   login: "Login",
+  register: "Register",
 };
 export const screen = {
   restaurant: restaurantStack,
