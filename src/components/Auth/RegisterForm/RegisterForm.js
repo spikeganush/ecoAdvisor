@@ -4,18 +4,39 @@ import { Input, Icon, Button } from "react-native-elements";
 import { styles } from "./RegisterForm.styles";
 import { useFormik } from "formik";
 import { initialValues, validationSchema } from "./RegisterForm.data";
+import { screen } from "../../../utils";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigation } from "@react-navigation/native";
+import { assertionError, async, FirebaseError } from "@firebase/util";
+import Toast from "react-native-toast-message";
 
 export function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
+  const navigation = useNavigation();
 
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: validationSchema(),
     validateOnChange: false,
-    onSubmit: (formValue) => {
-      console.log("form sent");
-      console.log(formValue);
+    onSubmit: async (formValue) => {
+      try {
+        const auth = getAuth();
+        await createUserWithEmailAndPassword(
+          auth,
+          formValue.email,
+          formValue.password
+        );
+        navigation.navigate(screen.account.account);
+      } catch (error) {
+        console.log(error);
+        Toast.show({
+          type: "error",
+          position: "bottom",
+          text1: "Error",
+          text2: "Something went wrong, please try again later",
+        });
+      }
     },
   });
   const showHiddenPassword = () => setShowPassword((prevState) => !prevState);
@@ -68,6 +89,7 @@ export function RegisterForm() {
         containerStyle={styles.btnContainer}
         buttonStyle={styles.btn}
         onPress={formik.handleSubmit}
+        loading={formik.isSubmitting}
       />
     </View>
   );

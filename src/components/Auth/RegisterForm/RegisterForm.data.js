@@ -12,7 +12,10 @@ export function validationSchema() {
     email: Yup.string()
       .email("Wrong email")
       .required("Please a right email is required"),
-    password: Yup.string().required("Password is required"),
+    password: Yup.string()
+      .required("Password is required")
+      .min(6, "Password must be at least 6 characters"),
+
     repeatPassword: Yup.string()
       .required("Repeat password is required")
       .oneOf([Yup.ref("password")], "Passwords must match"),
