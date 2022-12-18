@@ -1,10 +1,8 @@
 import * as Yup from "yup";
-
 export function initialValues() {
   return {
     email: "",
     password: "",
-    repeatPassword: "",
   };
 }
 export function validationSchema() {
@@ -19,9 +17,5 @@ export function validationSchema() {
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
         "Password must contain at least one uppercase, one lowercase, one number and one special case character"
       ),
-
-    repeatPassword: Yup.string()
-      .required("Repeat password is required")
-      .oneOf([Yup.ref("password")], "Passwords must match"),
   });
 }

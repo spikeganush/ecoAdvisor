@@ -4,7 +4,7 @@ import React from "react";
 import { styles } from "./LoginScreen.styles";
 import { screen } from "../../../utils";
 import { useNavigation } from "@react-navigation/native";
-
+import { LoginForm } from "../../../components/Auth";
 export function LoginScreen() {
   const navigation = useNavigation();
   const goToRegister = () => {
@@ -17,8 +17,13 @@ export function LoginScreen() {
         style={styles.image}
       />
       <View style={styles.content}>
-        <Text>We Are in Login</Text>
-        <Text onPress={goToRegister}>Register</Text>
+        <LoginForm />
+        <Text style={styles.textRegister}>
+          Still dont have an account?{" "}
+          <Text style={styles.btnRegister} onPress={goToRegister}>
+            Register
+          </Text>
+        </Text>
       </View>
     </ScrollView>
   );
