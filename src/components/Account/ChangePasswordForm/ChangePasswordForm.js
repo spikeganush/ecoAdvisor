@@ -9,10 +9,15 @@ import {
   updatePassword,
   EmailAuthProvider,
   reauthenticateWithCredential,
+  signOut,
 } from "firebase/auth";
 import Toast from "react-native-toast-message";
 
 export function ChangePasswordForm(props) {
+  const logout = async () => {
+    const auth = getAuth();
+    await signOut(auth);
+  };
   const { onClose } = props;
   const [showPassword, setShowPassword] = useState(false);
   const onShowPassword = () => setShowPassword((prevState) => !prevState);
@@ -29,17 +34,21 @@ export function ChangePasswordForm(props) {
         );
         reauthenticateWithCredential(currentUser, credentials);
         await updatePassword(currentUser, formValue.newPassword);
+        logout();
         onClose();
+        Toast.show({
+          type: "success",
+          position: "bottom",
+          text1: "Success",
+          text2: "Password changed successfully, please login again",
+        });
       } catch (error) {
+        console.log(error);
         Toast.show({
           type: "error",
           position: "bottom",
-          text1: "Error changing password",
-          text2: error.message,
-          visibilityTime: 4000,
-          autoHide: true,
-          topOffset: 30,
-          bottomOffset: 40,
+          text1: "Error",
+          text2: "Error changing password",
         });
       }
     },

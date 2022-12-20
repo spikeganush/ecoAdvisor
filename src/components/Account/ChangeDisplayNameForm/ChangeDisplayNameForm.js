@@ -17,6 +17,12 @@ export function ChangeDisplayNameForm(props) {
         const { displayName } = formValue;
         const currentUser = getAuth().currentUser;
         await updateProfile(currentUser, { displayName });
+        Toast.show({
+          type: "success",
+          position: "bottom",
+          text1: "Success",
+          text2: "Name and last name changed successfully",
+        });
         onReload();
         onClose();
       } catch (error) {

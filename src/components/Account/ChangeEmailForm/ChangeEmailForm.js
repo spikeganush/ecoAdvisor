@@ -36,11 +36,18 @@ export function ChangeEmailForm(props) {
 
         onReload();
         onClose();
+        Toast.show({
+          type: "success",
+          position: "bottom",
+          text1: "Success",
+          text2: "Email changed successfully",
+        });
       } catch (error) {
         Toast.show({
           type: "error",
           position: "bottom",
-          text1: "Error changing the email",
+          text1: "Error",
+          text2: "Error changing the email",
         });
       }
     },
