@@ -43,6 +43,7 @@ export function ChangeEmailForm(props) {
           text2: "Email changed successfully",
         });
       } catch (error) {
+        console.log(error);
         Toast.show({
           type: "error",
           position: "bottom",
@@ -58,6 +59,11 @@ export function ChangeEmailForm(props) {
       <Input
         placeholder="New email"
         containerStyle={styles.input}
+        rightIcon={{
+          type: "material-community",
+          name: "at",
+          color: "#c2c2c2",
+        }}
         onChangeText={(text) => formik.setFieldValue("email", text)}
         errorMessage={formik.errors.email}
       />
