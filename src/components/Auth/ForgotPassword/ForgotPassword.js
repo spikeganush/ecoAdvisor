@@ -8,6 +8,7 @@ import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import Toast from "react-native-toast-message";
 
 export function ForgotPassword(props) {
+  console.log(props);
   const { close } = props;
   const formik = useFormik({
     initialValues: initialValues,

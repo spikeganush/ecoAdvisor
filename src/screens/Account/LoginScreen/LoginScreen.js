@@ -31,7 +31,7 @@ export function LoginScreen() {
           </Text>
         </Text>
         <Text style={styles.textRegister}>
-          Have you forgot your password?{" "}
+          Forgot your password?{" "}
           <Text style={styles.btnRegister} onPress={onCloseOpenModal}>
             Reset password
           </Text>

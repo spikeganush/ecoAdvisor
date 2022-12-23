@@ -13,6 +13,7 @@ import { initialValues, validationSchema } from "./ChangeEmailForm.data";
 import { styles } from "./ChangeEmailForm.styles";
 
 export function ChangeEmailForm(props) {
+  console.log(props);
   const { onClose, onReload } = props;
   const [showPassword, setShowPassword] = useState(false);
 
