@@ -4,6 +4,7 @@ import { styles } from "./AddRestaurantScreen.styles";
 import {
   InfoForm,
   UploadImagesForm,
+  ImageRestaurant,
 } from "../../../components/Restaurants/AddRestaurant";
 import { Button } from "react-native-elements";
 import { useFormik } from "formik";
@@ -20,6 +21,7 @@ export function AddRestaurantScreen() {
   });
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
+      <ImageRestaurant formik={formik} />
       <InfoForm formik={formik} />
       <UploadImagesForm formik={formik} />
       <Button
