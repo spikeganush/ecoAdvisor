@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, Text } from "react-native";
-import { Icon } from "react-native-elements";
+import { View } from "react-native";
+import { Icon, Text } from "react-native-elements";
 import { styles } from "./RestaurantsScreen.styles";
 import { screen } from "../../../utils";
 import { getAuth, onAuthStateChanged } from "firebase/auth";

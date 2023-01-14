@@ -3,6 +3,7 @@ import "yup-phone-lite";
 
 export function initialValues() {
   return {
+    owner: "false",
     name: "",
     address: "",
     phone: "",
@@ -14,6 +15,7 @@ export function initialValues() {
 }
 export function validationSchema() {
   return Yup.object().shape({
+    owner: Yup.string(),
     name: Yup.string().required("Business name is required"),
     address: Yup.string().required("Business address is required"),
     phone: Yup.string().phone("AU", true, "Invalid phone"),

@@ -7,6 +7,7 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 as uuid } from "uuid";
 import { LoadingModal } from "../../../Shared";
 import { map, filter } from "lodash";
+import { Switch } from "react-native-switch";
 
 export function UploadImagesForm(props) {
   const { formik } = props;
@@ -63,6 +64,9 @@ export function UploadImagesForm(props) {
       { cancelable: false }
     );
   };
+  // const [isEnabled, setIsEnabled] = useState(false);
+  // const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+  // console.log(isEnabled);
 
   return (
     <>
@@ -87,6 +91,18 @@ export function UploadImagesForm(props) {
           />
         ))}
       </ScrollView>
+      {/* \      <Switch
+        value={isEnabled}
+        onValueChange={() => toggleSwitch()}
+        disabled={false}
+        activeText={"yes"}
+        inActiveText={"no"}
+        backgroundActive={"#00a680"}
+        backgroundInactive={"red"}
+        circleActiveColor={"#00a680"}
+        circleInActiveColor={"red"}
+      /> */}
+
       <Text style={styles.error}>{formik.errors.images}</Text>
       <LoadingModal show={isLoading} text="Uploading image" />
     </>

@@ -9,8 +9,10 @@ import {
 import { Button } from "react-native-elements";
 import { useFormik } from "formik";
 import { initialValues, validationSchema } from "./AddRestaurantScreen.data";
+import { screen } from "../../../utils";
 
-export function AddRestaurantScreen() {
+export function AddRestaurantScreen(props) {
+  const { navigation } = props;
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: validationSchema(),
@@ -19,6 +21,14 @@ export function AddRestaurantScreen() {
       console.log(formValue);
     },
   });
+  const goToEcoForm = () => {
+    navigation.navigate(screen.restaurant.restaurantForm, {
+      formValue: formik.values,
+      console: console.log(formik.values),
+    });
+  };
+  // navigation.navigate(screen.ecoForm, { formValue: formik.values });
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <ImageRestaurant formik={formik} />
@@ -29,6 +39,11 @@ export function AddRestaurantScreen() {
         buttonStyle={styles.addRestaurant}
         onPress={formik.handleSubmit}
         loading={formik.isSubmitting}
+      />
+      <Button
+        title="Next"
+        buttonStyle={styles.addRestaurant}
+        onPress={goToEcoForm}
       />
     </ScrollView>
   );

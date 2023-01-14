@@ -1,8 +1,9 @@
 import { View } from "react-native";
 import React, { useState } from "react";
 import { styles } from "./InfoForm.styles";
-import { Input } from "react-native-elements";
+import { Input, Text } from "react-native-elements";
 import { MapForm } from "../MapForm";
+import { Switch } from "react-native-switch";
 
 export function InfoForm(props) {
   const { formik } = props;
@@ -17,16 +18,37 @@ export function InfoForm(props) {
 
     return "#c2c2c2";
   };
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => {
+    setIsEnabled((previousState) => !previousState);
+    formik.setFieldValue("owner", isEnabled);
+  };
+  // console.log(isEnabled);
+
   return (
     <>
       <View style={styles.content}>
+        <View style={styles.switch}>
+          <Text style={styles.text}>Are you the owner</Text>
+          <Switch
+            value={isEnabled}
+            onValueChange={() => toggleSwitch()}
+            disabled={false}
+            activeText={"yes"}
+            inActiveText={"no"}
+            backgroundInactive={"#ff0000"}
+            backgroundActive={"#00a680"}
+            circleInActiveColor={"#FFFFFF"}
+            circleActiveColor={"#FFFFFF"}
+          />
+        </View>
         <Input
           placeholder="Business name"
           onChangeText={(text) => formik.setFieldValue("name", text)}
           errorMessage={formik.errors.name}
         />
         <Input
-          placeholder="Restaurant address"
+          placeholder="Business address"
           onChangeText={(text) => formik.setFieldValue("address", text)}
           errorMessage={formik.errors.address}
           rightIcon={{

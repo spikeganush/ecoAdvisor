@@ -11,4 +11,14 @@ export const styles = StyleSheet.create({
     padding: 0,
     margin: 0,
   },
+  text: {
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+
+  switch: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    margin: 10,
+  },
 });

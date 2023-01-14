@@ -68,7 +68,7 @@ export function AccountOptions(props) {
 function getMenuOptions(selectedComponent) {
   return [
     {
-      title: "Cambiar Nombre y Apellidos",
+      title: "Change name and surname",
       iconType: "material-community",
       iconNameLeft: "account-circle",
       iconColorLeft: "#ccc",
@@ -77,7 +77,7 @@ function getMenuOptions(selectedComponent) {
       onPress: () => selectedComponent("displayName"),
     },
     {
-      title: "Cambiar Email",
+      title: "Change email",
       iconType: "material-community",
       iconNameLeft: "at",
       iconColorLeft: "#ccc",
@@ -86,7 +86,7 @@ function getMenuOptions(selectedComponent) {
       onPress: () => selectedComponent("email"),
     },
     {
-      title: "Cambiar contraseña",
+      title: "Change password",
       iconType: "material-community",
       iconNameLeft: "lock-reset",
       iconColorLeft: "#ccc",
