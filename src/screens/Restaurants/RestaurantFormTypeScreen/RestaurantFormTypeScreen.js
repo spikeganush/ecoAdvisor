@@ -43,6 +43,7 @@ export function RestaurantFormTypeScreen(props) {
         buttonStyle={styles.addRestaurant}
         onPress={formik.handleSubmit}
         loading={formik.isSubmitting}
+        disabled={formik.values.RestaurantType === ''}
       />
     </ScrollView>
   );

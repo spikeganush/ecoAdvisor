@@ -1,9 +1,11 @@
-import { View } from "react-native";
-import { Text, CheckBox, Input, Icon } from "react-native-elements";
-import React, { useState } from "react";
-import { styles } from "./RestaurantCheckBox.styles";
-import { Dropdown } from "react-native-element-dropdown";
-import AntDesign from "react-native-vector-icons/AntDesign";
+import { View } from 'react-native';
+import { Text, CheckBox, Input, Icon } from 'react-native-elements';
+import React, { useState } from 'react';
+import { styles } from './RestaurantCheckBox.styles';
+import { Dropdown } from 'react-native-element-dropdown';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Data from './RestaurantCheckboxesData.json';
+
 export function RestaurantCheckBox(props) {
   const { formik } = props;
   const [isEnabled, setIsEnabled] = useState(false);
@@ -27,14 +29,14 @@ export function RestaurantCheckBox(props) {
   const [check18, setCheck18] = useState(false);
   const [check19, setCheck19] = useState(false);
   const [check20, setCheck20] = useState(false);
-  console.log("valor check1 value ", check1);
-  console.log("valor check1 formikonchange", formik.values.restaurantType);
+  console.log('valor check1 value ', check1);
+  console.log('valor check1 formikonchange', formik.values.restaurantType);
   console.log(
-    "valor DiscountForUsingOwncup",
+    'valor DiscountForUsingOwncup',
     formik.values.DiscountForUsingOwncup
   );
   console.log(
-    "valor check1 ExtracargheForSingleUseCup",
+    'valor check1 ExtracargheForSingleUseCup',
     formik.values.ExtracargheForSingleUseCup
   );
 
@@ -43,31 +45,31 @@ export function RestaurantCheckBox(props) {
   };
   const checkBox1 = () => {
     setCheck1((previousState) => !previousState);
-    formik.setFieldValue("DiscountForUsingOwncup", !check1);
+    formik.setFieldValue('DiscountForUsingOwncup', !check1);
   };
   const checkBox2 = () => {
     setCheck2((previousState) => !previousState);
-    formik.setFieldValue("ExtracargheForSingleUseCup", !check2);
+    formik.setFieldValue('ExtracargheForSingleUseCup', !check2);
   };
   const checkBox3 = () => {
     setCheck3((previousState) => !previousState);
-    formik.setFieldValue("MugCupLibrary", !check3);
+    formik.setFieldValue('MugCupLibrary', !check3);
   };
   const checkBox4 = () => {
     setCheck4((previousState) => !previousState);
-    formik.setFieldValue("BiodegradableCups", !check4);
+    formik.setFieldValue('BiodegradableCups', !check4);
   };
   const checkBox5 = () => {
     setCheck5((previousState) => !previousState);
-    formik.setFieldValue("BiodegradableLids", !check5);
+    formik.setFieldValue('BiodegradableLids', !check5);
   };
   const checkBox6 = () => {
     setCheck6((previousState) => !previousState);
-    formik.setFieldValue("optionNotgetiingTheLids", !check6);
+    formik.setFieldValue('optionNotgetiingTheLids', !check6);
   };
   const checkBox7 = () => {
     setCheck7((previousState) => !previousState);
-    formik.setFieldValue("plantBasedMilkOption", !check7);
+    formik.setFieldValue('plantBasedMilkOption', !check7);
   };
 
   const [showCoffee, setShowCoffee] = useState(false);
@@ -82,7 +84,7 @@ export function RestaurantCheckBox(props) {
         <Text
           style={styles.text}
           onPress={() => {
-            showCoffee ? setShowCoffee(false) : setShowCoffee(true);
+            setShowCoffee(!showCoffee);
           }}
         >
           Coffee
@@ -99,6 +101,15 @@ export function RestaurantCheckBox(props) {
 
       {showCoffee ? (
         <>
+          {/* {Data.coffee.map((item) => {
+            console.log({ item });
+            <CheckBox
+              title={'Ppoueryt'}
+              checked={check1}
+              onPress={() => checkBox1()}
+              key={`coffee-${item.id}`}
+            />;
+          })} */}
           <CheckBox
             title="Discount for using own cup ?"
             checked={check1}
@@ -140,7 +151,7 @@ export function RestaurantCheckBox(props) {
         <Text
           style={styles.text}
           onPress={() => {
-            showMenu ? setShowMenu(false) : setShowMenu(true);
+            setShowMenu(!showMenu);
           }}
         >
           Menu
@@ -150,7 +161,7 @@ export function RestaurantCheckBox(props) {
           type="material-community"
           color="#00a680"
           onPress={() => {
-            showMenu ? setShowMenu(false) : setShowMenu(true);
+            setShowMenu(!showMenu);
           }}
         />
       </View>

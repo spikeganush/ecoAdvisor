@@ -10,15 +10,15 @@ export function RestaurantTypeDropdown(props) {
     { label: 'Cofee/Bakery', value: 'cofee/Bakery' },
   ];
 
-  const [value, setValue] = useState({}); // Initialize useState with the type is gonna receive (string put '', array put [], object put {}, number put 0)
+  const [value, setValue] = useState(''); // Initialize useState with the type is gonna receive (string put '', array put [], object put {}, number put 0)
 
   console.log('valor restaurante value ', value);
   console.log('valor restype formikonchange', formik.values.restaurantType);
 
-  useEffect(() => {
-    console.count('useEffect');
-    formik.setFieldValue('RestaurantType', data[0].value);
-  }, []);
+  // useEffect(() => {
+  //   console.count('useEffect');
+  //   formik.setFieldValue('RestaurantType', data[0].value);
+  // }, []);
 
   // Have created this function to have better readability for the code
   const handleChange = (e) => {

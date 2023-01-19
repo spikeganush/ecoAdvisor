@@ -1,0 +1,39 @@
+{
+  "coffee": [
+    {
+      "id": 1,
+      "title": "Discount for using own cup ?",
+      "value": "DiscountForUsingOwncup"
+    },
+    {
+      "id": 2,
+      "title": "Extracharge for single use cup?",
+      "value": "ExtrachargeForSingleUseCup"
+    },
+    {
+      "id": 3,
+      "title": "Mug/cup library",
+      "value": "MugCupLibrary"
+    },
+    {
+      "id": 4,
+      "title": "Biodegradable Cups?",
+      "value": "BiodegradableCups"
+    },
+    {
+      "id": 5,
+      "title": "Biodegradable Lids?",
+      "value": "BiodegradableLids"
+    },
+    {
+      "id": 6,
+      "title": "option not getting the lids",
+      "value": "OptionNotGettingTheLids"
+    },
+    {
+      "id": 7,
+      "title": "plant based milk option",
+      "value": "PlantBasedMilkOption"
+    }
+  ]
+}
