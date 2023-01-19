@@ -1,21 +1,23 @@
-import { ScrollView } from "react-native";
-import React from "react";
-import { styles } from "./RestaurantFormTypeScreen.styles";
-import { RestaurantTypeDropdown } from "../../../components/Restaurants/AddRestaurant";
-import { Button } from "react-native-elements";
-import { useFormik } from "formik";
+import { ScrollView } from 'react-native';
+import React from 'react';
+import { styles } from './RestaurantFormTypeScreen.styles';
+import {
+  RestaurantTypeDropdown,
+  RestaurantCheckBox,
+} from '../../../components/Restaurants/AddRestaurant';
+import { Button } from 'react-native-elements';
+import { useFormik } from 'formik';
 import {
   initialValues,
   validationSchema,
-} from "./RestaurantFormTypeScreen.data";
-import { RestaurantCheckBox } from "../../../components/Restaurants/AddRestaurant";
-import { screen } from "../../../utils";
+} from './RestaurantFormTypeScreen.data';
+import { screen } from '../../../utils';
 
 export function RestaurantFormTypeScreen(props) {
   const { navigation } = props;
   const goToRestaurantScreen = () => {
     navigation.navigate(screen.restaurant.restaurants, {
-      console: console.log("pasando valores fromik", formik.values),
+      console: console.log('pasando valores fromik', formik.values),
     });
   };
   const formik = useFormik({
