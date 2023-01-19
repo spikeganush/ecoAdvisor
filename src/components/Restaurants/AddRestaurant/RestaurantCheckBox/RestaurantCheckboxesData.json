@@ -2,38 +2,213 @@
   "coffee": [
     {
       "id": 1,
-      "title": "Discount for using own cup ?",
-      "value": "DiscountForUsingOwncup"
+      "title": "Discount for using own cup?",
+      "value": "DiscountForUsingOwncup",
+      "checked": false
     },
     {
       "id": 2,
       "title": "Extracharge for single use cup?",
-      "value": "ExtrachargeForSingleUseCup"
+      "value": "ExtrachargeForSingleUseCup",
+      "checked": false
     },
     {
       "id": 3,
       "title": "Mug/cup library",
-      "value": "MugCupLibrary"
+      "value": "MugCupLibrary",
+      "checked": false
     },
     {
       "id": 4,
       "title": "Biodegradable Cups?",
-      "value": "BiodegradableCups"
+      "value": "BiodegradableCups",
+      "checked": false
     },
     {
       "id": 5,
       "title": "Biodegradable Lids?",
-      "value": "BiodegradableLids"
+      "value": "BiodegradableLids",
+      "checked": false
     },
     {
       "id": 6,
       "title": "option not getting the lids",
-      "value": "OptionNotGettingTheLids"
+      "value": "OptionNotGettingTheLids",
+      "checked": false
     },
     {
       "id": 7,
       "title": "plant based milk option",
+      "value": "PlantBasedMilkOption",
+      "checked": false
+    }
+  ],
+  "menu": [
+    {
+      "id": 1,
+      "title": "Vegetarian options",
+      "value": "VegetarianOptions"
+    },
+    {
+      "id": 2,
+      "title": "Vegan options",
+      "value": "VeganOptions"
+    },
+    {
+      "id": 3,
+      "title": "Organic food option",
+      "value": "OrganicFoodOption"
+    },
+    {
+      "id": 4,
+      "title": "Use of free range meat?",
+      "value": "UseOfFreeRangeMeat"
+    },
+    {
+      "id": 5,
+      "title": "Use of free range eggs",
+      "value": "UseOfFreeRangeEggs"
+    },
+    {
+      "id": 6,
+      "title": "Local Food",
+      "value": "LocalFood"
+    },
+    {
+      "id": 7,
+      "title": "Seasonal Food",
+      "value": "SeasonalFood"
+    },
+    {
+      "id": 8,
+      "title": "plant based milk option",
       "value": "PlantBasedMilkOption"
+    }
+  ],
+  "waste": [
+    {
+      "id": 1,
+      "title": "Plasti cups free",
+      "value": "PlastiCupsFree"
+    },
+    {
+      "id": 2,
+      "title": "Plastic bag free",
+      "value": "PlasticBagFree"
+    },
+    {
+      "id": 3,
+      "title": "Plastic straw free",
+      "value": "PlasticStrawFree"
+    },
+    {
+      "id": 4,
+      "title": "Plastic cutlery free",
+      "value": "PlasticCutleryFree"
+    },
+    {
+      "id": 5,
+      "title": "Plastic container free",
+      "value": "PlasticContainerFree"
+    },
+    {
+      "id": 6,
+      "title": "Selling reusable bags",
+      "value": "SellingReusableBags"
+    },
+    {
+      "id": 7,
+      "title": "Selling reusable cups",
+      "value": "SellingReusableCups"
+    },
+    {
+      "id": 8,
+      "title": "Welcome reusable container",
+      "value": "WelcomeReusableContainer"
+    },
+    {
+      "id": 9,
+      "title": "Discount on reusable container",
+      "value": "DiscountOnReusableContainer"
+    },
+    {
+      "id": 10,
+      "title": "Free water refill",
+      "value": "FreeWaterRefill"
+    },
+    {
+      "id": 11,
+      "title": "Dedicates recycling Bins",
+      "value": "DedicatesRecyclingBins"
+    }
+  ],
+  "supplier": [
+    {
+      "id": 1,
+      "title": "Non toxic cleaning product",
+      "value": "NonToxicCleaningProduct"
+    },
+    {
+      "id": 2,
+      "title": "Managing water waste",
+      "value": "ManagingWaterWaste"
+    },
+    {
+      "id": 3,
+      "title": "Plastic straw free",
+      "value": "PlasticStrawFree"
+    },
+    {
+      "id": 4,
+      "title": "Managing electricity waste",
+      "value": "ManagingElectricityWaste"
+    },
+    {
+      "id": 5,
+      "title": "Reusable energy",
+      "value": "ReusableEnergy"
+    }
+  ],
+  "community": [
+    {
+      "id": 1,
+      "title": "Talky table",
+      "value": "TalkyTable"
+    },
+    {
+      "id": 2,
+      "title": "Pet friendly",
+      "value": "PetFriendly"
+    },
+    {
+      "id": 3,
+      "title": "Free wifi",
+      "value": "FreeWifi"
+    },
+    {
+      "id": 4,
+      "title": "Organizing community events",
+      "value": "OrganizingCommunityEvents"
+    },
+    {
+      "id": 5,
+      "title": "Friendly staff",
+      "value": "FriendlyStaff"
+    },
+    {
+      "id": 6,
+      "title": "Book library",
+      "value": "BookLibrary"
+    },
+    {
+      "id": 7,
+      "title": "Outdoor sitting",
+      "value": "OutdoorSitting"
+    },
+    {
+      "id": 8,
+      "title": "Non smoking place",
+      "value": "NonSmokingPlace"
     }
   ]
 }
