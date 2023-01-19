@@ -3,6 +3,9 @@ import { screen } from "../utils";
 import { RestaurantsScreen } from "../screens/Restaurants/RestaurantsScreen/RestaurantsScreen";
 import { AddRestaurantScreen } from "../screens/Restaurants/AddRestaurantScreen/AddRestaurantScreen";
 import { EcoFormScreen } from "../screens/Restaurants/EcoFormScreen/EcoFormScreen";
+import { BusinessTypeScreen } from "../screens/Restaurants/BusinessTypeScreen/BusinessTypeScreen";
+import { RestaurantFormTypeScreen } from "../screens/Restaurants/RestaurantFormTypeScreen/RestaurantFormTypeScreen";
+import { ShopFormTypeScreen } from "../screens/Restaurants/ShopFormTypeScreen/ShopFormTypeScreen";
 const Stack = createNativeStackNavigator();
 
 export function RestaurantStack() {
@@ -22,6 +25,21 @@ export function RestaurantStack() {
         name={screen.restaurant.restaurantForm}
         component={EcoFormScreen}
         options={{ title: "Restaurant form" }}
+      />
+      <Stack.Screen
+        name={screen.restaurant.businessTYpeForm}
+        component={BusinessTypeScreen}
+        options={{ title: " Business type" }}
+      />
+      <Stack.Screen
+        name={screen.restaurant.restaurantTypeForm}
+        component={RestaurantFormTypeScreen}
+        options={{ title: "Restaurant form" }}
+      />
+      <Stack.Screen
+        name={screen.restaurant.shopTypeForm}
+        component={ShopFormTypeScreen}
+        options={{ title: "Shop form" }}
       />
     </Stack.Navigator>
   );

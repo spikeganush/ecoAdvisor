@@ -1,21 +1,20 @@
 import { ScrollView } from "react-native";
 import React from "react";
-import { styles } from "./AddRestaurantScreen.styles";
-import {
-  InfoForm,
-  UploadImagesForm,
-  ImageRestaurant,
-} from "../../../components/Restaurants/AddRestaurant";
+import { styles } from "./RestaurantFormTypeScreen.styles";
+import { RestaurantTypeDropdown } from "../../../components/Restaurants/AddRestaurant";
 import { Button } from "react-native-elements";
 import { useFormik } from "formik";
-import { initialValues, validationSchema } from "./AddRestaurantScreen.data";
+import {
+  initialValues,
+  validationSchema,
+} from "./RestaurantFormTypeScreen.data";
+import { RestaurantCheckBox } from "../../../components/Restaurants/AddRestaurant";
 import { screen } from "../../../utils";
 
-export function AddRestaurantScreen(props) {
+export function RestaurantFormTypeScreen(props) {
   const { navigation } = props;
-  const goToEcoForm = () => {
-    navigation.navigate(screen.restaurant.businessTYpeForm, {
-      formValue: formik.values,
+  const goToRestaurantScreen = () => {
+    navigation.navigate(screen.restaurant.restaurants, {
       console: console.log("pasando valores fromik", formik.values),
     });
   };
@@ -24,7 +23,8 @@ export function AddRestaurantScreen(props) {
     validationSchema: validationSchema(),
     validateOnChange: false,
     onSubmit: async (formValue) => {
-      goToEcoForm();
+      goToRestaurantScreen();
+      // goToEcoForm();
       // console.log("formik handlesubmit", formValue);
     },
   });
@@ -33,19 +33,14 @@ export function AddRestaurantScreen(props) {
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <ImageRestaurant formik={formik} />
-      <InfoForm formik={formik} />
-      <UploadImagesForm formik={formik} />
-      {/* <Button
-        title="Add bussiness"
-        buttonStyle={styles.addRestaurant}
-        onPress={formik.handleSubmit}
-        loading={formik.isSubmitting}
-      /> */}
+      <RestaurantTypeDropdown formik={formik} />
+      <RestaurantCheckBox formik={formik} />
+
       <Button
         title="Next"
         buttonStyle={styles.addRestaurant}
-        onPress={goToEcoForm}
+        onPress={formik.handleSubmit}
+        loading={formik.isSubmitting}
       />
     </ScrollView>
   );

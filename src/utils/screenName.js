@@ -3,6 +3,9 @@ const restaurantStack = {
   restaurants: "Restaurants",
   addRestaurant: "AddRestaurant",
   restaurantForm: "RestaurantForm",
+  businessTYpeForm: "BusinessTypeForm",
+  restaurantTypeForm: "RestaurantTypeForm",
+  shopTypeForm: "ShopTypeForm",
 };
 const favoritesStack = {
   tab: "FavoritesTab",

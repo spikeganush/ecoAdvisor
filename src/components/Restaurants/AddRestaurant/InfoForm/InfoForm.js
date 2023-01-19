@@ -20,10 +20,11 @@ export function InfoForm(props) {
   };
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => {
-    setIsEnabled((previousState) => !previousState);
-    formik.setFieldValue("owner", isEnabled);
+    setIsEnabled(!isEnabled);
+    formik.setFieldValue("owner", !isEnabled);
   };
   // console.log(isEnabled);
+  console.log("owner", isEnabled);
 
   return (
     <>

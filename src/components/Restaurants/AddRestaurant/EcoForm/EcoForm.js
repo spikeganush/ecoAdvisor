@@ -1,10 +1,10 @@
 import { View } from "react-native";
-import { Text, CheckBox } from "react-native-elements";
+import { Text, CheckBox, Input } from "react-native-elements";
 import React, { useState } from "react";
 import { styles } from "./EcoForm.styles";
 import { Dropdown } from "react-native-element-dropdown";
 import AntDesign from "react-native-vector-icons/AntDesign";
-
+import { RestaurantTypeDropdown } from "../RestaurantTypeDropdown/RestaurantTypeDropdown";
 export function EcoForm(props) {
   const { formik } = props;
   const [isEnabled, setIsEnabled] = useState(false);
@@ -12,25 +12,26 @@ export function EcoForm(props) {
     setIsEnabled((previousState) => !previousState);
     formik.setFieldValue("eco", isEnabled);
   };
+
   const dataBusinessType = [
     { label: "Restaurant", value: "restaurant" },
     { label: "Shop", value: "shop" },
-    { label: "Acomodation", value: "acomodation" },
-  ];
-  const dataRestaurantType = [
-    { label: "Restaurant", value: "restaurantType" },
-    { label: "Cofee/Bakery", value: "cofee/Bakery" },
-    { label: "Pub/Bar", value: "pub/Bar" },
   ];
 
-  const [value, setValue] = useState(null);
-  const [valueRestaurantType, setValueRestaurantType] = useState(null);
+  const [value, setValue] = useState();
+  // console.log("valor value ", value);
+  // console.log("valor formikonchange", formik.values.businessType);
+  // console.log("formValues de ecoscreen", formik.values);
 
   // console.log(isEnabled);
   return (
     <View style={styles.content}>
       <Text style={styles.text}>Is the business Ecofriendly?</Text>
-
+      {/* <Input
+        placeholder="Business name"
+        onChangeText={(text) => formik.setFieldValue("businessType", text)}
+        errorMessage={formik.errors.businessType}
+      /> */}
       <Dropdown
         style={styles.dropdown}
         placeholderStyle={styles.placeholderStyle}
@@ -45,9 +46,11 @@ export function EcoForm(props) {
         placeholder="Select business type"
         searchPlaceholder="Search..."
         value={value}
-        onChange={(item) => {
-          setValue(item.value);
+        onChange={(text) => {
+          setValue(text.value);
           formik.setFieldValue("businessType", value);
+          // console.log("a ver ", value);
+          // console.log("a ver formik ", formik.values.businessType);
         }}
         renderLeftIcon={() => (
           <AntDesign
@@ -60,7 +63,9 @@ export function EcoForm(props) {
       />
       {value === "restaurant" ? (
         <>
-          <Dropdown
+          <RestaurantTypeDropdown formik={formik} />
+
+          {/* <Dropdown
             style={styles.dropdown}
             placeholderStyle={styles.placeholderStyle}
             selectedTextStyle={styles.selectedTextStyle}
@@ -87,7 +92,8 @@ export function EcoForm(props) {
                 size={20}
               />
             )}
-          />
+          /> */}
+
           <CheckBox
             title="Eco friendly"
             checked={isEnabled}
@@ -102,25 +108,12 @@ export function EcoForm(props) {
       ) : value === "shop" ? (
         <>
           <CheckBox
-            title="Eco friendly"
+            title="Eco friendly Shop"
             checked={isEnabled}
             onPress={() => toggleSwitch()}
           />
           <CheckBox
-            title="Vegan"
-            checked={isEnabled}
-            onPress={() => toggleSwitch()}
-          />
-        </>
-      ) : value === "acomodation" ? (
-        <>
-          <CheckBox
-            title="Eco friendly"
-            checked={isEnabled}
-            onPress={() => toggleSwitch()}
-          />
-          <CheckBox
-            title="Vegan"
+            title="Vegan Shop"
             checked={isEnabled}
             onPress={() => toggleSwitch()}
           />

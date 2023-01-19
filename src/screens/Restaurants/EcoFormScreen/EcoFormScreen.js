@@ -6,16 +6,30 @@ import { EcoForm } from "../../../components/Restaurants/AddRestaurant";
 import { useFormik } from "formik";
 import { initialValues, validationSchema } from "./EcoFormScreen.data";
 export function EcoFormScreen(props) {
-  const formValue = props.route.params.formValue;
-  console.log(formValue);
+  const formValues = props.route.params.formValue;
+  // console.log("formValuesinit", initialValues());
+  // console.log("formValues de ecoscreen", formik.values);
+
+  // console.log(formValues);
+
+  // console.log(props);
+  const goToEcoForm = () => {
+    console.log("pasando valores fromik", formik.values);
+  };
+
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: validationSchema(),
     validateOnChange: false,
     onSubmit: async (formValue) => {
-      console.log(formValue);
+      // const formikvalores = formik.values;
+      // console.log("form Values de ecoscreen", formikvalores);
+      console.log("AVERQ de ecoscreen", formValue);
+      // goToEcoForm();
     },
   });
+  // console.log("AQUI Values de ecoscreen", formik.values);
+
   return (
     <View>
       <EcoForm formik={formik} />
