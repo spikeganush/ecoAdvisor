@@ -1,13 +1,14 @@
-import { View } from 'react-native';
-import { Text, CheckBox, Input, Icon } from 'react-native-elements';
-import React, { useState } from 'react';
-import { styles } from './RestaurantCheckBox.styles';
-import { Dropdown } from 'react-native-element-dropdown';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Data from './RestaurantCheckboxesData.json';
+import { View } from "react-native";
+import { Text, CheckBox, Input, Icon } from "react-native-elements";
+import React, { useState } from "react";
+import { styles } from "./RestaurantCheckBox.styles";
+import { Dropdown } from "react-native-element-dropdown";
+import AntDesign from "react-native-vector-icons/AntDesign";
+import Data from "./RestaurantCheckboxesData.json";
 
 export function RestaurantCheckBox(props) {
   const { formik } = props;
+  console.log("VAMOSAVERQUEPASA", formik.values.RestaurantType);
   const [isEnabled, setIsEnabled] = useState(false);
   const [check1, setCheck1] = useState(false);
   const [check2, setCheck2] = useState(false);
@@ -29,14 +30,14 @@ export function RestaurantCheckBox(props) {
   const [check18, setCheck18] = useState(false);
   const [check19, setCheck19] = useState(false);
   const [check20, setCheck20] = useState(false);
-  console.log('valor check1 value ', check1);
-  console.log('valor check1 formikonchange', formik.values.restaurantType);
+  console.log("valor check1 value ", check1);
+  console.log("valor check1 formikonchange", formik.values.restaurantType);
   console.log(
-    'valor DiscountForUsingOwncup',
+    "valor DiscountForUsingOwncup",
     formik.values.DiscountForUsingOwncup
   );
   console.log(
-    'valor check1 ExtracargheForSingleUseCup',
+    "valor check1 ExtracargheForSingleUseCup",
     formik.values.ExtracargheForSingleUseCup
   );
 
@@ -45,31 +46,31 @@ export function RestaurantCheckBox(props) {
   };
   const checkBox1 = () => {
     setCheck1((previousState) => !previousState);
-    formik.setFieldValue('DiscountForUsingOwncup', !check1);
+    formik.setFieldValue("DiscountForUsingOwncup", !check1);
   };
   const checkBox2 = () => {
     setCheck2((previousState) => !previousState);
-    formik.setFieldValue('ExtracargheForSingleUseCup', !check2);
+    formik.setFieldValue("ExtracargheForSingleUseCup", !check2);
   };
   const checkBox3 = () => {
     setCheck3((previousState) => !previousState);
-    formik.setFieldValue('MugCupLibrary', !check3);
+    formik.setFieldValue("MugCupLibrary", !check3);
   };
   const checkBox4 = () => {
     setCheck4((previousState) => !previousState);
-    formik.setFieldValue('BiodegradableCups', !check4);
+    formik.setFieldValue("BiodegradableCups", !check4);
   };
   const checkBox5 = () => {
     setCheck5((previousState) => !previousState);
-    formik.setFieldValue('BiodegradableLids', !check5);
+    formik.setFieldValue("BiodegradableLids", !check5);
   };
   const checkBox6 = () => {
     setCheck6((previousState) => !previousState);
-    formik.setFieldValue('optionNotgetiingTheLids', !check6);
+    formik.setFieldValue("optionNotgetiingTheLids", !check6);
   };
   const checkBox7 = () => {
     setCheck7((previousState) => !previousState);
-    formik.setFieldValue('plantBasedMilkOption', !check7);
+    formik.setFieldValue("plantBasedMilkOption", !check7);
   };
 
   const [showCoffee, setShowCoffee] = useState(false);
@@ -79,6 +80,7 @@ export function RestaurantCheckBox(props) {
   const [showComunity, setShowComunity] = useState(false);
 
   return (
+    //if restaurant type is Restaurant display this
     <View style={styles.content}>
       <View style={styles.container}>
         <Text
@@ -114,36 +116,43 @@ export function RestaurantCheckBox(props) {
             title="Discount for using own cup ?"
             checked={check1}
             onPress={() => checkBox1()}
+            checkedColor="#00a680"
           />
           <CheckBox
             title="Extracarghe for single use cup?"
             checked={check2}
             onPress={() => checkBox2()}
+            checkedColor="#00a680"
           />
           <CheckBox
             title="Mug/cup library"
             checked={check3}
             onPress={() => checkBox3()}
+            checkedColor="#00a680"
           />
           <CheckBox
             title="Biodegradable Cups?"
             checked={check4}
             onPress={() => checkBox4()}
+            checkedColor="#00a680"
           />
           <CheckBox
             title="Biodegradable Lids?"
             checked={check5}
             onPress={() => checkBox5()}
+            checkedColor="#00a680"
           />
           <CheckBox
             title="option not getting the lids"
             checked={check6}
             onPress={() => checkBox6()}
+            checkedColor="#00a680"
           />
           <CheckBox
             title="plant based milk option"
             checked={check7}
             onPress={() => checkBox7()}
+            checkedColor="#00a680"
           />
         </>
       ) : null}

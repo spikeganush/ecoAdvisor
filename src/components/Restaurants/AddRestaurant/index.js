@@ -6,3 +6,4 @@ export * from "./EcoForm";
 export * from "./RestaurantTypeDropdown";
 export * from "./ShopTypeDropdown";
 export * from "./RestaurantCheckBox";
+export * from "./ShopCheckBox";

@@ -8,17 +8,22 @@ export function ShopTypeDropdown(props) {
   const { formik } = props;
 
   const data = [
-    { label: "Grocery/Supermarket ", value: "Grocery/Supermarket " },
-    { label: "Pet ", value: "Pet " },
-    { label: "Clothing/Shoe  ", value: "Clothing/Shoe  " },
-    { label: "Beauty/body care ", value: "Beauty/body care " },
-    { label: "Cosmetic/make up ", value: "Cosmetic/make up " },
-    { label: "Craft store  ", value: "Craft store " },
-    { label: "Homeware  ", value: "Homeware  " },
-    { label: "op Shop ", value: "op Shop " },
+    { label: "Grocery/Supermarket", value: "Grocery/Supermarket" },
+    { label: "Pet", value: "Pet" },
+    { label: "Clothing/Shoe", value: "Clothing/Shoe" },
+    { label: "Beauty/body care", value: "Beauty/body care" },
+    { label: "Cosmetic/make up", value: "Cosmetic/make up" },
+    { label: "Craft store", value: "Craft store" },
+    { label: "Homeware", value: "Homeware" },
+    { label: "op Shop", value: "op Shop" },
   ];
 
   const [value, setValue] = useState();
+  const handleChange = (e) => {
+    // console.log('valor restype ', e);
+    setValue(e.value);
+    formik.setFieldValue("ShopType", e.value); // I don't pass useState value here, because with useState I will have the previous value, useState is async
+  };
 
   return (
     <>
@@ -36,11 +41,7 @@ export function ShopTypeDropdown(props) {
         placeholder="Shop  type"
         searchPlaceholder="Search..."
         value={value}
-        onChange={(text) => {
-          setValue(text.value);
-          formik.setFieldValue("shopType", value);
-          // console.log("valor restype ", value);
-        }}
+        onChange={handleChange}
         renderLeftIcon={() => (
           <AntDesign
             style={styles.icon}
