@@ -1,23 +1,23 @@
-import { ScrollView } from 'react-native';
-import React from 'react';
-import { styles } from './RestaurantFormTypeScreen.styles';
+import { ScrollView } from "react-native";
+import React from "react";
+import { styles } from "./RestaurantFormTypeScreen.styles";
 import {
   RestaurantTypeDropdown,
   RestaurantCheckBox,
-} from '../../../components/Restaurants/AddRestaurant';
-import { Button } from 'react-native-elements';
-import { useFormik } from 'formik';
+} from "../../../components/Restaurants/AddRestaurant";
+import { Button } from "react-native-elements";
+import { useFormik } from "formik";
 import {
   initialValues,
   validationSchema,
-} from './RestaurantFormTypeScreen.data';
-import { screen } from '../../../utils';
+} from "./RestaurantFormTypeScreen.data";
+import { screen } from "../../../utils";
 
 export function RestaurantFormTypeScreen(props) {
   const { navigation } = props;
   const goToRestaurantScreen = () => {
     navigation.navigate(screen.restaurant.restaurants, {
-      console: console.log('pasando valores fromik', formik.values),
+      console: console.log("pasando valores fromik", formik.values),
     });
   };
   const formik = useFormik({
@@ -43,7 +43,7 @@ export function RestaurantFormTypeScreen(props) {
         buttonStyle={styles.addRestaurant}
         onPress={formik.handleSubmit}
         loading={formik.isSubmitting}
-        disabled={formik.values.RestaurantType === ''}
+        disabled={formik.values.RestaurantType === ""}
       />
     </ScrollView>
   );

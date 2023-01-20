@@ -1,18 +1,18 @@
-import { View, Text } from 'react-native';
-import React, { useState } from 'react';
-import { Button } from 'react-native-elements';
-import { styles } from './BusinessTypeScreen.styles';
-import { Dropdown } from 'react-native-element-dropdown';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import { screen } from '../../../utils';
+import { View, Text } from "react-native";
+import React, { useState } from "react";
+import { Button } from "react-native-elements";
+import { styles } from "./BusinessTypeScreen.styles";
+import { Dropdown } from "react-native-element-dropdown";
+import AntDesign from "react-native-vector-icons/AntDesign";
+import { screen } from "../../../utils";
 
 export function BusinessTypeScreen(props) {
   const dataBusinessType = [
-    { label: 'Restaurant', value: 'restaurant' },
-    { label: 'Shop', value: 'shop' },
+    { label: "Restaurant", value: "restaurant" },
+    { label: "Shop", value: "shop" },
   ];
 
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   console.log({ value });
   const { navigation } = props;
   const goToRestaurantFormTypeScreen = () => {
@@ -56,15 +56,15 @@ export function BusinessTypeScreen(props) {
           />
         )}
       />
-      {value === 'restaurant' ? (
+      {value === "restaurant" ? (
         <Button
-          title="Add bussiness"
+          title="Go to restaurant form"
           buttonStyle={styles.addRestaurant}
           onPress={goToRestaurantFormTypeScreen}
         />
-      ) : value === 'shop' ? (
+      ) : value === "shop" ? (
         <Button
-          title="Add bussiness"
+          title="Go to shop form"
           buttonStyle={styles.addRestaurant}
           onPress={goToShopFormTypeScreen}
         />
