@@ -51,7 +51,7 @@ export function AccountOptions(props) {
             <ListItem.Title>{menu.title}</ListItem.Title>
           </ListItem.Content>
           <Icon
-            tyoe={menu.iconType}
+            type={menu.iconType}
             name={menu.iconNameRight}
             color={menu.iconColorRight}
           />

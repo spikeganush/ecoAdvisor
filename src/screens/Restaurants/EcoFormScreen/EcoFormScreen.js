@@ -34,7 +34,7 @@ export function EcoFormScreen(props) {
     <View>
       <EcoForm formik={formik} />
       <Button
-        title="Add bussiness"
+        title="Add business"
         buttonStyle={styles.addRestaurant}
         onPress={formik.handleSubmit}
         loading={formik.isSubmitting}

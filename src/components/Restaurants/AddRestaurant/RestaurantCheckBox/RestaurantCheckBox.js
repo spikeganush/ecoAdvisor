@@ -1,8 +1,8 @@
-import { View } from 'react-native';
-import { Text, CheckBox, Icon } from 'react-native-elements';
-import React, { useState } from 'react';
-import { styles } from './RestaurantCheckBox.styles';
-import Data from './RestaurantCheckboxesData.json';
+import { View } from "react-native";
+import { Text, CheckBox, Icon, ListItem } from "react-native-elements";
+import React, { useState } from "react";
+import { styles } from "./RestaurantCheckBox.styles";
+import Data from "./RestaurantCheckboxesData.json";
 
 export function RestaurantCheckBox(props) {
   const { formik } = props;
@@ -11,7 +11,7 @@ export function RestaurantCheckBox(props) {
     formik.setFieldValue(`${type}.${value}`, !formik.values[type][value]);
   };
 
-  console.log('Formik values', formik.values);
+  console.log("Formik values", formik.values);
 
   const [showCoffee, setShowCoffee] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
@@ -21,7 +21,185 @@ export function RestaurantCheckBox(props) {
 
   return (
     <View style={styles.content}>
-      <View style={styles.container}>
+      <ListItem
+        bottomDivider
+        onPress={() => {
+          showCoffee ? setShowCoffee(false) : setShowCoffee(true);
+        }}
+      >
+        <Icon type={"material-community"} name={"coffee"} color={"#00a680"} />
+        <ListItem.Content>
+          <ListItem.Title>{"Coffee"}</ListItem.Title>
+        </ListItem.Content>
+        <Icon
+          type={"material-community"}
+          name={"arrow-down-drop-circle-outline"}
+          color={"#00a680"}
+          onPress={() => {
+            showCoffee ? setShowCoffee(false) : setShowCoffee(true);
+          }}
+        />
+      </ListItem>
+      {showCoffee ? (
+        <>
+          {Data.coffee.map((item) => {
+            return (
+              <CheckBox
+                title={item.title}
+                checked={formik.values.coffee[item.value]}
+                onPress={() => handleCheckboxes("coffee", item.value)}
+                key={`coffee-${item.id}`}
+              />
+            );
+          })}
+        </>
+      ) : null}
+      <ListItem
+        bottomDivider
+        onPress={() => {
+          showMenu ? setShowMenu(false) : setShowMenu(true);
+        }}
+      >
+        <Icon type={"material-community"} name={"menu"} color={"#00a680"} />
+        <ListItem.Content>
+          <ListItem.Title>{"Menu"}</ListItem.Title>
+        </ListItem.Content>
+        <Icon
+          type={"material-community"}
+          name={"arrow-down-drop-circle-outline"}
+          color={"#00a680"}
+          onPress={() => {
+            showMenu ? setShowMenu(false) : setShowMenu(true);
+          }}
+        />
+      </ListItem>
+      {showMenu ? (
+        <>
+          {Data.menu.map((item) => {
+            return (
+              <CheckBox
+                title={item.title}
+                checked={formik.values.menu[item.value]}
+                onPress={() => handleCheckboxes("menu", item.value)}
+                key={`menu-${item.id}`}
+              />
+            );
+          })}
+        </>
+      ) : null}
+      <ListItem
+        bottomDivider
+        onPress={() => {
+          showWaste ? setShowWaste(false) : setShowWaste(true);
+        }}
+      >
+        <Icon
+          type={"material-community"}
+          name={"delete-empty-outline"}
+          color={"#00a680"}
+        />
+        <ListItem.Content>
+          <ListItem.Title>{"Waste"}</ListItem.Title>
+        </ListItem.Content>
+        <Icon
+          type={"material-community"}
+          name={"arrow-down-drop-circle-outline"}
+          color={"#00a680"}
+          onPress={() => {
+            showWaste ? setShowWaste(false) : setShowWaste(true);
+          }}
+        />
+      </ListItem>
+      {showWaste ? (
+        <>
+          {Data.waste.map((item) => {
+            return (
+              <CheckBox
+                title={item.title}
+                checked={formik.values.waste[item.value]}
+                onPress={() => handleCheckboxes("waste", item.value)}
+                key={`waste-${item.id}`}
+              />
+            );
+          })}
+        </>
+      ) : null}
+      <ListItem
+        bottomDivider
+        onPress={() => {
+          showSupplier ? setShowSupplier(false) : setShowSupplier(true);
+        }}
+      >
+        <Icon
+          type={"material-community"}
+          name={"lightbulb-on-outline"}
+          color={"#00a680"}
+        />
+        <ListItem.Content>
+          <ListItem.Title>{"Supplier"}</ListItem.Title>
+        </ListItem.Content>
+        <Icon
+          type={"material-community"}
+          name={"arrow-down-drop-circle-outline"}
+          color={"#00a680"}
+          onPress={() => {
+            showSupplier ? setShowSupplier(false) : setShowSupplier(true);
+          }}
+        />
+      </ListItem>
+      {showSupplier ? (
+        <>
+          {Data.supplier.map((item) => {
+            return (
+              <CheckBox
+                title={item.title}
+                checked={formik.values.supplier[item.value]}
+                onPress={() => handleCheckboxes("supplier", item.value)}
+                key={`supplier-${item.id}`}
+              />
+            );
+          })}
+        </>
+      ) : null}
+      <ListItem
+        bottomDivider
+        onPress={() => {
+          showCommunity ? setShowCommunity(false) : setShowCommunity(true);
+        }}
+      >
+        <Icon
+          type={"material-community"}
+          name={"account-supervisor"}
+          color={"#00a680"}
+        />
+        <ListItem.Content>
+          <ListItem.Title>{"Community"}</ListItem.Title>
+        </ListItem.Content>
+        <Icon
+          type={"material-community"}
+          name={"arrow-down-drop-circle-outline"}
+          color={"#00a680"}
+          onPress={() => {
+            showCommunity ? setShowCommunity(false) : setShowCommunity(true);
+          }}
+        />
+      </ListItem>
+      {showCommunity ? (
+        <>
+          {Data.community.map((item) => {
+            return (
+              <CheckBox
+                title={item.title}
+                checked={formik.values.community[item.value]}
+                onPress={() => handleCheckboxes("community", item.value)}
+                key={`community-${item.id}`}
+              />
+            );
+          })}
+        </>
+      ) : null}
+
+      {/* <View style={styles.container}>
         <Text
           style={styles.text}
           onPress={() => {
@@ -39,7 +217,6 @@ export function RestaurantCheckBox(props) {
           }}
         />
       </View>
-
       {showCoffee ? (
         <>
           {Data.coffee.map((item) => {
@@ -47,7 +224,7 @@ export function RestaurantCheckBox(props) {
               <CheckBox
                 title={item.title}
                 checked={formik.values.coffee[item.value]}
-                onPress={() => handleCheckboxes('coffee', item.value)}
+                onPress={() => handleCheckboxes("coffee", item.value)}
                 key={`coffee-${item.id}`}
               />
             );
@@ -79,7 +256,7 @@ export function RestaurantCheckBox(props) {
               <CheckBox
                 title={item.title}
                 checked={formik.values.menu[item.value]}
-                onPress={() => handleCheckboxes('menu', item.value)}
+                onPress={() => handleCheckboxes("menu", item.value)}
                 key={`menu-${item.id}`}
               />
             );
@@ -111,7 +288,7 @@ export function RestaurantCheckBox(props) {
               <CheckBox
                 title={item.title}
                 checked={formik.values.waste[item.value]}
-                onPress={() => handleCheckboxes('waste', item.value)}
+                onPress={() => handleCheckboxes("waste", item.value)}
                 key={`waste-${item.id}`}
               />
             );
@@ -143,7 +320,7 @@ export function RestaurantCheckBox(props) {
               <CheckBox
                 title={item.title}
                 checked={formik.values.supplier[item.value]}
-                onPress={() => handleCheckboxes('supplier', item.value)}
+                onPress={() => handleCheckboxes("supplier", item.value)}
                 key={`supplier-${item.id}`}
               />
             );
@@ -175,13 +352,13 @@ export function RestaurantCheckBox(props) {
               <CheckBox
                 title={item.title}
                 checked={formik.values.community[item.value]}
-                onPress={() => handleCheckboxes('community', item.value)}
+                onPress={() => handleCheckboxes("community", item.value)}
                 key={`community-${item.id}`}
               />
             );
           })}
         </>
-      ) : null}
+      ) : null} */}
     </View>
   );
 }

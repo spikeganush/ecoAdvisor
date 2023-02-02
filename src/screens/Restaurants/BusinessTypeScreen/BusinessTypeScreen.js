@@ -13,10 +13,13 @@ export function BusinessTypeScreen(props) {
   ];
 
   const [value, setValue] = useState("");
-  console.log({ value });
+  //console.log({ value });
   const { navigation } = props;
+  const ownerFormValue = props.route.params.ownerFormValue;
+  console.log({ ownerFormValue });
   const goToRestaurantFormTypeScreen = () => {
     navigation.navigate(screen.restaurant.restaurantTypeForm, {
+      ownerFormValue: ownerFormValue,
       // console: console.log("pasando valores fromik", formik.values),
     });
   };

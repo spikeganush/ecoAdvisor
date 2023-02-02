@@ -1,11 +1,11 @@
-import * as Yup from 'yup';
-import 'yup-phone-lite';
-import Data from '../../../components/Restaurants/AddRestaurant/RestaurantCheckBox/RestaurantCheckboxesData.json';
+import * as Yup from "yup";
+import "yup-phone-lite";
+// import Data from '../../../components/Restaurants/AddRestaurant/RestaurantCheckBox/RestaurantCheckboxesData.json';
 
 export function initialValues() {
   return {
-    BusinessType: 'Restaurant',
-    RestaurantType: '',
+    BusinessType: "Restaurant",
+    RestaurantType: "",
     coffee: {
       DiscountForUsingOwncup: false,
       ExtrachargeForSingleUseCup: false,
@@ -57,7 +57,7 @@ export function initialValues() {
 export function validationSchema() {
   return Yup.object().shape({
     BusinessType: Yup.string(),
-    RestaurantType: Yup.string().required('Restaurant type is required'),
+    RestaurantType: Yup.string().required("Restaurant type is required"),
     coffee: Yup.object({
       DiscountForUsingOwncup: Yup.boolean(),
       ExtrachargeForSingleUseCup: Yup.boolean(),

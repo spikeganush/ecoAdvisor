@@ -1,0 +1,137 @@
+{
+  "FoodProducts": [
+    {
+      "id": 1,
+      "title": "Vegetarian option?",
+      "value": "VegetarianOption",
+      "checked": false
+    },
+    {
+      "id": 2,
+      "title": "Vegan option?",
+      "value": "VeganOption",
+      "checked": false
+    },
+    {
+      "id": 3,
+      "title": "Organic products?",
+      "value": "OrganicProducts",
+      "checked": false
+    },
+    {
+      "id": 4,
+      "title": "Free range meat?",
+      "value": "FreeRangeMeat",
+      "checked": false
+    },
+    {
+      "id": 5,
+      "title": "Free range eggs ?",
+      "value": "FreeRangeEggs",
+      "checked": false
+    },
+    {
+      "id": 6,
+      "title": "Local food/products?",
+      "value": "LocalFoodProducts",
+      "checked": false
+    },
+    {
+      "id": 7,
+      "title": "Locally made?",
+      "value": "LocallyMade",
+      "checked": false
+    },
+    {
+      "id": 8,
+      "title": "No animal tested products?",
+      "value": "NoAnimalTestedProducts",
+      "checked": false
+    },
+    {
+      "id": 9,
+      "title": "cruelty free products?",
+      "value": "CrueltyFreeProducts",
+      "checked": false
+    },
+    {
+      "id": 10,
+      "title": "Local materials?",
+      "value": "LocalMaterials",
+      "checked": false
+    },
+    {
+      "id": 11,
+      "title": "No single use itmes?",
+      "value": "NoSingleUseItems",
+      "checked": false
+    },
+    {
+      "id": 12,
+      "title": "Second hand products?",
+      "value": "SecondHandProducts",
+      "checked": false
+    },
+    {
+      "id": 13,
+      "title": "Recicled materials?",
+      "value": "RecicledMaterials",
+      "checked": false
+    },
+    {
+      "id": 14,
+      "title": "Free of child labour?",
+      "value": "FreeOfChildLabour",
+      "checked": false
+    }
+  ],
+  "SupplierEnergy": [
+    {
+      "id": 1,
+      "title": "Non toxic cleaning product?",
+      "value": "NonToxicCleaningProduct"
+    },
+    {
+      "id": 2,
+      "title": "Managing water waste?",
+      "value": "ManagingWaterWaste"
+    },
+    {
+      "id": 3,
+      "title": "Managing electricity waste ",
+      "value": "ManagingElectricityWaste"
+    },
+    {
+      "id": 4,
+      "title": "Reusable energy?",
+      "value": "ReusableEnergy"
+    }
+  ],
+  "waste": [
+    {
+      "id": 1,
+      "title": "Plastic bag free?",
+      "value": "PlasticBagFree"
+    },
+    {
+      "id": 2,
+      "title": "Plastic packaging free?",
+      "value": "PlasticPackagingFree"
+    },
+    {
+      "id": 3,
+      "title": "Selling reusable bags?",
+      "value": "SellingReusableBags"
+    },
+    {
+      "id": 4,
+      "title": "Welcome reusable Bags?",
+      "value": "WelcomeReusableBags"
+    },
+    {
+      "id": 5,
+      "title": "Dedicates recycling Bins?",
+      "value": "DedicatesRecyclingBins"
+    }
+  ]
+}

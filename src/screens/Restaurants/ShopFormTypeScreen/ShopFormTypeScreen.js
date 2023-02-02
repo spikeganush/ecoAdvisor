@@ -5,7 +5,7 @@ import {
   ShopTypeDropdown,
   ShopCheckBox,
 } from "../../../components/Restaurants/AddRestaurant";
-import { Button } from "react-native-elements";
+import { Button, Text } from "react-native-elements";
 import { useFormik } from "formik";
 import { initialValues, validationSchema } from "./ShopFormTypeScreen.data";
 import { screen } from "../../../utils";
@@ -38,7 +38,7 @@ export function ShopFormTypeScreen(props) {
         buttonStyle={styles.addRestaurant}
         onPress={formik.handleSubmit}
         loading={formik.isSubmitting}
-        disabled={formik.values.RestaurantType === ""}
+        disabled={formik.values.ShopType === ""}
       />
     </ScrollView>
   );

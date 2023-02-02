@@ -1,22 +1,22 @@
-import { ScrollView } from 'react-native';
-import React from 'react';
-import { styles } from './AddRestaurantScreen.styles';
+import { ScrollView } from "react-native";
+import React from "react";
+import { styles } from "./AddRestaurantScreen.styles";
 import {
   InfoForm,
   UploadImagesForm,
   ImageRestaurant,
-} from '../../../components/Restaurants/AddRestaurant';
-import { Button } from 'react-native-elements';
-import { useFormik } from 'formik';
-import { initialValues, validationSchema } from './AddRestaurantScreen.data';
-import { screen } from '../../../utils';
+} from "../../../components/Restaurants/AddRestaurant";
+import { Button } from "react-native-elements";
+import { useFormik } from "formik";
+import { initialValues, validationSchema } from "./AddRestaurantScreen.data";
+import { screen } from "../../../utils";
 
 export function AddRestaurantScreen(props) {
   const { navigation } = props;
   const goToEcoForm = () => {
     navigation.navigate(screen.restaurant.businessTypeForm, {
-      formValue: formik.values,
-      console: console.log('pasando valores formik', formik.values),
+      ownerFormValue: formik.values,
+      console: console.log("addRestaurantScreen values: ", formik.values),
     });
   };
   const formik = useFormik({

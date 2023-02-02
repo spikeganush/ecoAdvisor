@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-
+import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyBKmkrMZsspzdsm-sJYAXm_jQxecIG-_As",
   authDomain: "ecoadvisor-c870f.firebaseapp.com",
@@ -12,3 +12,4 @@ const firebaseConfig = {
 };
 
 export const initFirebase = initializeApp(firebaseConfig);
+export const db = getFirestore(initFirebase);

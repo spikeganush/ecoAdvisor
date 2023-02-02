@@ -27,7 +27,7 @@ export function AppNavigation() {
       <Tab.Screen
         name={screen.restaurant.tab}
         component={RestaurantStack}
-        options={{ title: "Restaurants" }}
+        options={{ title: "Explore" }}
       />
       <Tab.Screen
         name={screen.favorites.tab}
