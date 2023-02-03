@@ -21,8 +21,19 @@ export function ShopFormTypeScreen(props) {
     validationSchema: validationSchema(),
     validateOnChange: false,
     onSubmit: async (formValue) => {
-      goToRestaurantScreen();
-      // console.log("formik handlesubmit", formValue);
+      try {
+        const newData = { ...formValue, ...ownerFormValue };
+        newData.id = uuidv4();
+        newData.createdAt = new Date();
+        console.log("newData", newData);
+        //add newData to firebase firestore collection "shops"
+
+        await setDoc(doc(db, "shops", newData.id), newData);
+
+        goToRestaurantScreen();
+      } catch (error) {
+        console.log("Error", error);
+      }
     },
   });
 

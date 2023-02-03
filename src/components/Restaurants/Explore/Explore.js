@@ -4,11 +4,10 @@ import {
   Animated,
   TouchableOpacity,
   TextInput,
-  StyleSheet,
   ScrollView,
 } from "react-native";
 import React, { useState, useEffect } from "react";
-// import { styles } from "./ListRestaurants.styles";
+import { styles } from "./Explore.styles";
 import {
   Text,
   Image,
@@ -281,17 +280,24 @@ export function Explore(props) {
       >
         {state.markers.map((marker, index) => (
           <View style={styles.card} key={index}>
-            <Image
-              //   source={marker.image}
-              source={require("../../../../assets/img/image-not-showing.webp/")}
-              style={styles.cardImage}
-              resizeMode="cover"
-            />
+            <View style={styles.cardImage} key={index}>
+              <Image
+                style={{ width: "100%", height: "100%" }}
+                //if there is marker.image, use it, otherwise use the default image from the assets
+                source={
+                  marker.image
+                    ? { uri: marker.image }
+                    : require("../../../../assets/img/suMLIqqc.png/")
+                }
+                // source={require("../../../../assets/img/image-not-showing.webp/")}
+                resizeMode="cover"
+              />
+            </View>
             <View style={styles.textContent}>
               <Text numberOfLines={1} style={styles.cardtitle}>
                 {marker.name}
               </Text>
-              {/* <StarRating ratings={marker.rating} reviews={marker.reviews} /> */}
+
               <Text numberOfLines={1} style={styles.cardDescription}>
                 {marker.address}
               </Text>
@@ -325,114 +331,3 @@ export function Explore(props) {
     </View>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  searchBox: {
-    position: "absolute",
-    marginTop: Platform.OS === "ios" ? 40 : 20,
-    flexDirection: "row",
-    backgroundColor: "#fff",
-    width: "90%",
-    alignSelf: "center",
-    borderRadius: 5,
-    padding: 10,
-    shadowColor: "#ccc",
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.5,
-    shadowRadius: 5,
-    elevation: 10,
-  },
-  chipsScrollView: {
-    position: "absolute",
-    top: Platform.OS === "ios" ? 90 : 80,
-    paddingHorizontal: 10,
-  },
-  chipsIcon: {
-    marginRight: 5,
-  },
-  chipsItem: {
-    flexDirection: "row",
-    backgroundColor: "#fff",
-    borderRadius: 20,
-    padding: 8,
-    paddingHorizontal: 20,
-    marginHorizontal: 10,
-    height: 35,
-    shadowColor: "#ccc",
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.5,
-    shadowRadius: 5,
-    elevation: 10,
-  },
-  scrollView: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    paddingVertical: 10,
-  },
-  endPadding: {
-    paddingRight: width - CARD_WIDTH,
-  },
-  card: {
-    // padding: 10,
-    elevation: 2,
-    backgroundColor: "#FFF",
-    borderTopLeftRadius: 5,
-    borderTopRightRadius: 5,
-    marginHorizontal: 10,
-    shadowColor: "#000",
-    shadowRadius: 5,
-    shadowOpacity: 0.3,
-    shadowOffset: { x: 2, y: -2 },
-    height: CARD_HEIGHT,
-    width: CARD_WIDTH,
-    overflow: "hidden",
-  },
-  cardImage: {
-    flex: 3,
-    width: "100%",
-    height: "100%",
-    alignSelf: "center",
-  },
-  textContent: {
-    flex: 2,
-    padding: 10,
-  },
-  cardtitle: {
-    fontSize: 12,
-    // marginTop: 5,
-    fontWeight: "bold",
-  },
-  cardDescription: {
-    fontSize: 12,
-    color: "#444",
-  },
-  markerWrap: {
-    alignItems: "center",
-    justifyContent: "center",
-    width: 50,
-    height: 50,
-  },
-  marker: {
-    width: 30,
-    height: 30,
-  },
-  button: {
-    alignItems: "center",
-    marginTop: 5,
-  },
-  signIn: {
-    width: "100%",
-    padding: 5,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 3,
-  },
-  textSign: {
-    fontSize: 14,
-    fontWeight: "bold",
-  },
-});

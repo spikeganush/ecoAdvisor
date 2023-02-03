@@ -1,4 +1,12 @@
 import { StyleSheet } from "react-native";
+import {
+  MARGIN,
+  CARD_WIDTH,
+  CARD_HEIGHT,
+  HEIGHT,
+  SPACING_FOR_CARD_INSET,
+} from "../../../screens/Restaurants/RestaurantsScreen";
+import { width } from "../../../screens/Restaurants/RestaurantsScreen";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -52,6 +60,7 @@ export const styles = StyleSheet.create({
   },
   card: {
     // padding: 10,
+    flex: 1,
     elevation: 2,
     backgroundColor: "#FFF",
     borderTopLeftRadius: 5,
@@ -84,6 +93,7 @@ export const styles = StyleSheet.create({
     fontSize: 12,
     color: "#444",
   },
+
   markerWrap: {
     alignItems: "center",
     justifyContent: "center",
