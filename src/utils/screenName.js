@@ -1,29 +1,30 @@
 const restaurantStack = {
-  tab: 'RestaurantsTab',
-  restaurants: 'Restaurants',
-  addRestaurant: 'AddRestaurant',
-  restaurantForm: 'RestaurantForm',
-  businessTypeForm: 'BusinessTypeForm',
-  restaurantTypeForm: 'RestaurantTypeForm',
-  shopTypeForm: 'ShopTypeForm',
+  tab: "RestaurantsTab",
+  restaurants: "Restaurants",
+  addRestaurant: "AddRestaurant",
+  restaurantForm: "RestaurantForm",
+  businessTypeForm: "BusinessTypeForm",
+  restaurantTypeForm: "RestaurantTypeForm",
+  shopTypeForm: "ShopTypeForm",
+  restaurant: "Restaurant",
 };
 const favoritesStack = {
-  tab: 'FavoritesTab',
-  favorites: 'Favorites',
+  tab: "FavoritesTab",
+  favorites: "Favorites",
 };
 const rankingStack = {
-  tab: 'RankingTab',
-  ranking: 'Ranking',
+  tab: "RankingTab",
+  ranking: "Ranking",
 };
 const searchStack = {
-  tab: 'SearchTab',
-  search: 'Search',
+  tab: "SearchTab",
+  search: "Search",
 };
 const accountStack = {
-  tab: 'AccountTab',
-  account: 'Account',
-  login: 'Login',
-  register: 'Register',
+  tab: "AccountTab",
+  account: "Account",
+  login: "Login",
+  register: "Register",
 };
 export const screen = {
   restaurant: restaurantStack,

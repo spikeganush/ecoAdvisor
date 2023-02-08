@@ -74,11 +74,16 @@ export const styles = StyleSheet.create({
     width: CARD_WIDTH,
     overflow: "hidden",
   },
+
   cardImage: {
     flex: 3,
     width: "100%",
     height: "100%",
     alignSelf: "center",
+  },
+  img: {
+    width: "100%",
+    height: "100%",
   },
   textContent: {
     flex: 2,

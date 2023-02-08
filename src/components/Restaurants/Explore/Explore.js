@@ -31,21 +31,23 @@ import {
   SPACING_FOR_CARD_INSET,
 } from "../../../screens/Restaurants/RestaurantsScreen";
 import { width } from "../../../screens/Restaurants/RestaurantsScreen";
-import { useTheme } from "@react-navigation/native";
+import { useNavigation, useTheme } from "@react-navigation/native";
+import { screen } from "../../../utils";
 
 export function Explore(props) {
-  console.log(
-    "DIMENSIONS",
-    MARGIN,
-    CARD_WIDTH,
-    CARD_HEIGHT,
-    HEIGHT,
-    SPACING_FOR_CARD_INSET
-  );
-  console.log("WIDTH", width);
+  // console.log(
+  //   "DIMENSIONS",
+  //   MARGIN,
+  //   CARD_WIDTH,
+  //   CARD_HEIGHT,
+  //   HEIGHT,
+  //   SPACING_FOR_CARD_INSET
+  // );
+  // console.log("WIDTH", width);
   const theme = useTheme();
 
   const { restaurants } = props;
+  const navigation = useNavigation();
 
   const markers = restaurants.map((restaurant) => {
     return {
@@ -57,6 +59,7 @@ export function Explore(props) {
       description: restaurant.data().description,
       image: restaurant.data().images[0],
       address: restaurant.data().address,
+      id: restaurant.id,
     };
   });
 
@@ -122,6 +125,9 @@ export function Explore(props) {
   let mapIndex = 0;
   let mapAnimation = new Animated.Value(0);
 
+  const goToDetails = (restaurant) => {
+    navigation.navigate(screen.restaurant.restaurant, { id: restaurant.id });
+  };
   useEffect(() => {
     mapAnimation.addListener(({ value }) => {
       let index = Math.floor(value / CARD_WIDTH + 0.3); // animate 30% away from landing on the next item
@@ -283,7 +289,8 @@ export function Explore(props) {
           <View style={styles.card} key={index}>
             <View style={styles.cardImage} key={index}>
               <Image
-                style={{ width: "100%", height: "100%" }}
+                // style={{ width: "100%", height: "100%" }}
+                style={styles.img}
                 //if there is marker.image, use it, otherwise use the default image from the assets
                 source={
                   marker.image
@@ -302,9 +309,12 @@ export function Explore(props) {
               <Text numberOfLines={1} style={styles.cardDescription}>
                 {marker.address}
               </Text>
+              <Text numberOfLines={1} style={styles.cardDescription}>
+                {marker.id}
+              </Text>
               <View style={styles.button}>
                 <TouchableOpacity
-                  onPress={() => {}}
+                  onPress={() => goToDetails(marker)}
                   style={[
                     styles.signIn,
                     {
