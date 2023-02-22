@@ -16,6 +16,8 @@ export function initialValues() {
       plantBasedMilkOption: false,
     },
     menu: {
+      FullyVegan: false,
+      FullyVegetarian: false,
       VegetarianOptions: false,
       VeganOptions: false,
       OrganicFoodOption: false,
@@ -26,6 +28,7 @@ export function initialValues() {
       PlantBasedMilkOption: false,
     },
     waste: {
+      FullyPlasticFree: false,
       PlastiCupsFree: false,
       PlasticBagFree: false,
       PlasticStrawFree: false,
@@ -68,6 +71,8 @@ export function validationSchema() {
       plantBasedMilkOption: Yup.boolean(),
     }),
     menu: Yup.object({
+      FullyVegan: Yup.boolean(),
+      FullyVegetarian: Yup.boolean(),
       VegetarianOptions: Yup.boolean(),
       VeganOptions: Yup.boolean(),
       OrganicFoodOption: Yup.boolean(),
@@ -78,6 +83,7 @@ export function validationSchema() {
       PlantBasedMilkOption: Yup.boolean(),
     }),
     waste: Yup.object({
+      FullyPlasticFree: Yup.boolean(),
       PlastiCupsFree: Yup.boolean(),
       PlasticBagFree: Yup.boolean(),
       PlasticStrawFree: Yup.boolean(),

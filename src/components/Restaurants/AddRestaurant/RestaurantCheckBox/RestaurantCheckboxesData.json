@@ -46,41 +46,52 @@
   "menu": [
     {
       "id": 1,
+      "title": "Fully vegan",
+      "value": "FullyVegan"
+    },
+    {
+      "id": 2,
+      "title": "Fully vegetarian",
+      "value": "FullyVegetarian"
+    },
+
+    {
+      "id": 3,
       "title": "Vegetarian options",
       "value": "VegetarianOptions"
     },
     {
-      "id": 2,
+      "id": 4,
       "title": "Vegan options",
       "value": "VeganOptions"
     },
     {
-      "id": 3,
+      "id": 5,
       "title": "Organic food option",
       "value": "OrganicFoodOption"
     },
     {
-      "id": 4,
+      "id": 6,
       "title": "Use of free range meat?",
       "value": "UseOfFreeRangeMeat"
     },
     {
-      "id": 5,
+      "id": 7,
       "title": "Use of free range eggs",
       "value": "UseOfFreeRangeEggs"
     },
     {
-      "id": 6,
+      "id": 8,
       "title": "Local Food",
       "value": "LocalFood"
     },
     {
-      "id": 7,
+      "id": 9,
       "title": "Seasonal Food",
       "value": "SeasonalFood"
     },
     {
-      "id": 8,
+      "id": 10,
       "title": "plant based milk option",
       "value": "PlantBasedMilkOption"
     }
@@ -88,56 +99,61 @@
   "waste": [
     {
       "id": 1,
-      "title": "Plasti cups free",
-      "value": "PlastiCupsFree"
+      "title": "Fully plastic free",
+      "value": "FullyPlasticFree"
     },
     {
       "id": 2,
+      "title": "Plastic cups free",
+      "value": "PlastiCupsFree"
+    },
+    {
+      "id": 3,
       "title": "Plastic bag free",
       "value": "PlasticBagFree"
     },
     {
-      "id": 3,
+      "id": 4,
       "title": "Plastic straw free",
       "value": "PlasticStrawFree"
     },
     {
-      "id": 4,
+      "id": 5,
       "title": "Plastic cutlery free",
       "value": "PlasticCutleryFree"
     },
     {
-      "id": 5,
+      "id": 6,
       "title": "Plastic container free",
       "value": "PlasticContainerFree"
     },
     {
-      "id": 6,
+      "id": 7,
       "title": "Selling reusable bags",
       "value": "SellingReusableBags"
     },
     {
-      "id": 7,
+      "id": 8,
       "title": "Selling reusable cups",
       "value": "SellingReusableCups"
     },
     {
-      "id": 8,
+      "id": 9,
       "title": "Welcome reusable container",
       "value": "WelcomeReusableContainer"
     },
     {
-      "id": 9,
+      "id": 10,
       "title": "Discount on reusable container",
       "value": "DiscountOnReusableContainer"
     },
     {
-      "id": 10,
+      "id": 11,
       "title": "Free water refill",
       "value": "FreeWaterRefill"
     },
     {
-      "id": 11,
+      "id": 12,
       "title": "Dedicates recycling Bins",
       "value": "DedicatesRecyclingBins"
     }

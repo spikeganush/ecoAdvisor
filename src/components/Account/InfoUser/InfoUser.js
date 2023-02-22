@@ -1,15 +1,65 @@
 import { View } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Avatar, Text } from "react-native-elements";
 import { getAuth, updateProfile } from "firebase/auth";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { styles } from "./InfoUser.styles";
 import * as ImagePicker from "expo-image-picker";
-
+import {
+  doc,
+  setDoc,
+  query,
+  collection,
+  where,
+  onSnapshot,
+  updateDoc,
+} from "firebase/firestore";
+import { db, screen } from "../../../utils";
+import { useNavigation, CommonActions } from "@react-navigation/native";
 export function InfoUser(props) {
   const { setLoading, setLoadingText } = props;
   const { uid, photoURL, displayName, email } = getAuth().currentUser;
   const [avatar, setAvatar] = useState(photoURL);
+  const navigation = useNavigation();
+
+  const resetRestaurantStackNavigation = () => {
+    navigation.dispatch(
+      CommonActions.reset({
+        index: 0,
+        routes: [
+          {
+            // name: screen.restaurant.tab,
+            name: screen.account.tab,
+            state: {
+              routes: [
+                {
+                  name: screen.restaurant.restaurants,
+                },
+              ],
+            },
+          },
+        ],
+      })
+    );
+  };
+
+  //useeffetc everytime the user changes the avatar it will update the avatar in the reviews collection
+  useEffect(() => {
+    const q = query(
+      collection(db, "reviews"),
+      where("idUser", "==", uid)
+      // orderBy("createdAt", "desc")
+    );
+
+    onSnapshot(q, async (snapshot) => {
+      const reviews = snapshot.docs;
+      const reviewRef = doc(db, "reviews", reviews[0].id);
+      await updateDoc(reviewRef, { avatar: avatar });
+      //reload RestaurantScreen reviews to update the avatar in the reviews list of the restaurant screen when the user changes the avatar in the account screen and goes back to the restaurant screen without reloading the restaurant screen manually (this is to avoid the user to reload the restaurant screen manually)
+
+      // props.reloadRestaurantScreen();
+    });
+  }, []);
 
   //Cogiendo el avatar de la galeria
   const changeAvatar = async () => {
@@ -47,7 +97,7 @@ export function InfoUser(props) {
     updateProfile(auth.currentUser, { photoURL: imageUrl });
     console.log(auth.currentUser);
     setAvatar(imageUrl);
-
+    resetRestaurantStackNavigation();
     setLoading(false);
   };
 

@@ -16,4 +16,9 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 15,
   },
+  closeIconContainer: {
+    position: "absolute",
+    bottom: 15,
+    right: 15,
+  },
 });

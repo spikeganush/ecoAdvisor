@@ -45,7 +45,7 @@ export function ShopCheckBox(props) {
         />
       </ListItem>
       {showProducts ? (
-        <>
+        <View>
           {Data.FoodProducts.map((item) => {
             return (
               <CheckBox
@@ -57,7 +57,17 @@ export function ShopCheckBox(props) {
               />
             );
           })}
-        </>
+          <View style={styles.closeIconContainer}>
+            <Icon
+              type={"material-community"}
+              name={"arrow-up-drop-circle-outline"}
+              color={"#00a680"}
+              onPress={() => {
+                showProducts ? setShowProducts(false) : setShowProducts(true);
+              }}
+            />
+          </View>
+        </View>
       ) : null}
       <ListItem
         bottomDivider
@@ -83,7 +93,7 @@ export function ShopCheckBox(props) {
         />
       </ListItem>
       {showSupplier ? (
-        <>
+        <View>
           {Data.SupplierEnergy.map((item) => {
             return (
               <CheckBox
@@ -95,7 +105,17 @@ export function ShopCheckBox(props) {
               />
             );
           })}
-        </>
+          <View style={styles.closeIconContainer}>
+            <Icon
+              type={"material-community"}
+              name={"arrow-up-drop-circle-outline"}
+              color={"#00a680"}
+              onPress={() => {
+                showSupplier ? setShowSupplier(false) : setShowSupplier(true);
+              }}
+            />
+          </View>
+        </View>
       ) : null}
       <ListItem
         bottomDivider
@@ -121,7 +141,7 @@ export function ShopCheckBox(props) {
         />
       </ListItem>
       {showWaste ? (
-        <>
+        <View>
           {Data.waste.map((item) => {
             return (
               <CheckBox
@@ -133,7 +153,17 @@ export function ShopCheckBox(props) {
               />
             );
           })}
-        </>
+          <View style={styles.closeIconContainer}>
+            <Icon
+              type={"material-community"}
+              name={"arrow-up-drop-circle-outline"}
+              color={"#00a680"}
+              onPress={() => {
+                showWaste ? setShowWaste(false) : setShowWaste(true);
+              }}
+            />
+          </View>
+        </View>
       ) : null}
       {/* <View style={styles.container}>
         <Text

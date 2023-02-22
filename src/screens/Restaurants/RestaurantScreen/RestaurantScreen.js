@@ -12,7 +12,14 @@ import {
   limit,
 } from "firebase/firestore";
 import { db } from "../../../utils";
-import { Carousel, Loading } from "../../../components/Shared";
+import {
+  Header,
+  Info,
+  EcoInfo,
+  BtnReviewForm,
+  Reviews,
+} from "../../../components/Restaurant";
+import { Carousel, Loading, Map } from "../../../components/Shared";
 const { width, height } = Dimensions.get("window");
 
 export function RestaurantScreen(props) {
@@ -28,7 +35,17 @@ export function RestaurantScreen(props) {
   if (!restaurant) return <Loading show text="Loading..." />;
   return (
     <ScrollView style={styles.content}>
-      <Carousel arrayImages={restaurant.images} height={250} width={width} />
+      <Carousel
+        arrayImages={restaurant.images}
+        height={250}
+        width={width}
+        // hideDots
+      />
+      <Header restaurant={restaurant} />
+      <Info restaurant={restaurant} />
+      <EcoInfo restaurant={restaurant} />
+      <BtnReviewForm idRestaurant={route.params.id} />
+      <Reviews idRestaurant={route.params.id} />
     </ScrollView>
   );
 }

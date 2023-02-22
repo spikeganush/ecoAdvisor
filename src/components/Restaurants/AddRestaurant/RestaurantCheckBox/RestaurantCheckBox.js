@@ -22,6 +22,7 @@ export function RestaurantCheckBox(props) {
   return (
     <View style={styles.content}>
       <ListItem
+        style={styles.listItem}
         bottomDivider
         onPress={() => {
           showCoffee ? setShowCoffee(false) : setShowCoffee(true);
@@ -41,7 +42,7 @@ export function RestaurantCheckBox(props) {
         />
       </ListItem>
       {showCoffee ? (
-        <>
+        <View style={styles.checkboxContainer}>
           {Data.coffee.map((item) => {
             return (
               <CheckBox
@@ -52,7 +53,17 @@ export function RestaurantCheckBox(props) {
               />
             );
           })}
-        </>
+          <View style={styles.closeIconContainer}>
+            <Icon
+              type={"material-community"}
+              name={"arrow-up-drop-circle-outline"}
+              color={"#00a680"}
+              onPress={() => {
+                showCoffee ? setShowCoffee(false) : setShowCoffee(true);
+              }}
+            />
+          </View>
+        </View>
       ) : null}
       <ListItem
         bottomDivider
@@ -74,7 +85,7 @@ export function RestaurantCheckBox(props) {
         />
       </ListItem>
       {showMenu ? (
-        <>
+        <View>
           {Data.menu.map((item) => {
             return (
               <CheckBox
@@ -85,7 +96,17 @@ export function RestaurantCheckBox(props) {
               />
             );
           })}
-        </>
+          <View style={styles.closeIconContainer}>
+            <Icon
+              type={"material-community"}
+              name={"arrow-up-drop-circle-outline"}
+              color={"#00a680"}
+              onPress={() => {
+                showMenu ? setShowMenu(false) : setShowMenu(true);
+              }}
+            />
+          </View>
+        </View>
       ) : null}
       <ListItem
         bottomDivider
@@ -111,7 +132,7 @@ export function RestaurantCheckBox(props) {
         />
       </ListItem>
       {showWaste ? (
-        <>
+        <View>
           {Data.waste.map((item) => {
             return (
               <CheckBox
@@ -122,7 +143,17 @@ export function RestaurantCheckBox(props) {
               />
             );
           })}
-        </>
+          <View style={styles.closeIconContainer}>
+            <Icon
+              type={"material-community"}
+              name={"arrow-up-drop-circle-outline"}
+              color={"#00a680"}
+              onPress={() => {
+                showWaste ? setShowWaste(false) : setShowWaste(true);
+              }}
+            />
+          </View>
+        </View>
       ) : null}
       <ListItem
         bottomDivider
@@ -148,7 +179,7 @@ export function RestaurantCheckBox(props) {
         />
       </ListItem>
       {showSupplier ? (
-        <>
+        <View>
           {Data.supplier.map((item) => {
             return (
               <CheckBox
@@ -159,7 +190,17 @@ export function RestaurantCheckBox(props) {
               />
             );
           })}
-        </>
+          <View style={styles.closeIconContainer}>
+            <Icon
+              type={"material-community"}
+              name={"arrow-up-drop-circle-outline"}
+              color={"#00a680"}
+              onPress={() => {
+                showSupplier ? setShowSupplier(false) : setShowSupplier(true);
+              }}
+            />
+          </View>
+        </View>
       ) : null}
       <ListItem
         bottomDivider
@@ -185,7 +226,7 @@ export function RestaurantCheckBox(props) {
         />
       </ListItem>
       {showCommunity ? (
-        <>
+        <View>
           {Data.community.map((item) => {
             return (
               <CheckBox
@@ -196,7 +237,19 @@ export function RestaurantCheckBox(props) {
               />
             );
           })}
-        </>
+          <View style={styles.closeIconContainer}>
+            <Icon
+              type={"material-community"}
+              name={"arrow-up-drop-circle-outline"}
+              color={"#00a680"}
+              onPress={() => {
+                showCommunity
+                  ? setShowCommunity(false)
+                  : setShowCommunity(true);
+              }}
+            />
+          </View>
+        </View>
       ) : null}
 
       {/* <View style={styles.container}>

@@ -7,6 +7,7 @@ import { BusinessTypeScreen } from "../screens/Restaurants/BusinessTypeScreen/Bu
 import { RestaurantFormTypeScreen } from "../screens/Restaurants/RestaurantFormTypeScreen/RestaurantFormTypeScreen";
 import { ShopFormTypeScreen } from "../screens/Restaurants/ShopFormTypeScreen/ShopFormTypeScreen";
 import { RestaurantScreen } from "../screens/Restaurants/RestaurantScreen/RestaurantScreen";
+import { AddReviewRestaurantScreen } from "../screens/Restaurants/AddReviewRestaurantScreen";
 const Stack = createNativeStackNavigator();
 
 export function RestaurantStack() {
@@ -46,6 +47,11 @@ export function RestaurantStack() {
         name={screen.restaurant.restaurant}
         component={RestaurantScreen}
         options={{ title: "Restaurant" }}
+      />
+      <Stack.Screen
+        name={screen.restaurant.addReviewRestaurant}
+        component={AddReviewRestaurantScreen}
+        options={{ title: "Add review" }}
       />
     </Stack.Navigator>
   );

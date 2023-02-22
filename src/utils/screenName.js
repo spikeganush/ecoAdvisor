@@ -7,6 +7,7 @@ const restaurantStack = {
   restaurantTypeForm: "RestaurantTypeForm",
   shopTypeForm: "ShopTypeForm",
   restaurant: "Restaurant",
+  addReviewRestaurant: "AddReviewRestaurant",
 };
 const favoritesStack = {
   tab: "FavoritesTab",

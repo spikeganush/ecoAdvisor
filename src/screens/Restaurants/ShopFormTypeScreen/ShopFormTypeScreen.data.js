@@ -7,6 +7,8 @@ export function initialValues() {
     BusinessType: "Shop",
     ShopType: "",
     FoodProducts: {
+      FullyVegan: false,
+      FullyVegetarian: false,
       VegetarianOption: false,
       VeganOption: false,
       FreeRangeMeat: false,
@@ -28,6 +30,7 @@ export function initialValues() {
       ReusableEnergy: false,
     },
     waste: {
+      FullyPlasticBagFree: false,
       PlasticBagFree: false,
       PlasticPackagingFree: false,
       SellingReusableBags: false,
