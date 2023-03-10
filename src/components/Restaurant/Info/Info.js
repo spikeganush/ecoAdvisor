@@ -27,31 +27,30 @@ export function Info(props) {
       iconType: "material-community",
       action: null,
     },
-    restaurant.menu.VeganOptions && {
-      text: "Vegan Options",
-      iconName: "leaf",
-      iconType: "material-community",
-      action: null,
-    },
+    // restaurant.menu.VeganOptions && {
+    //   text: "Vegan Options",
+    //   iconName: "leaf",
+    //   iconType: "material-community",
+    //   action: null,
+    // },
   ];
 
   return (
     <View style={styles.content}>
-      <Text style={styles.title}>Bussiness Information</Text>
+      <Text style={styles.title}>Details</Text>
       <Map location={restaurant.location} name={restaurant.name} height={100} />
       {map(
         listInfo,
-        (item, index) => (
+        (item, index) =>
           //if item.text is not empty then render the ListItem component else return null (nothing)
-          // item.text && (
-          <ListItem key={index} bottomDivider style={styles.listItem}>
-            <Icon name={item.iconName} type={item.iconType} color="#00a680" />
-            <ListItem.Content>
-              <ListItem.Title>{item.text}</ListItem.Title>
-            </ListItem.Content>
-          </ListItem>
-        )
-        // )
+          item.text && (
+            <ListItem key={index} bottomDivider style={styles.listItem}>
+              <Icon name={item.iconName} type={item.iconType} color="#00a680" />
+              <ListItem.Content>
+                <ListItem.Title>{item.text}</ListItem.Title>
+              </ListItem.Content>
+            </ListItem>
+          )
       )}
     </View>
   );

@@ -57,7 +57,7 @@ export function RestaurantsScreen(props) {
 
         // <Text>hola</Text>
       )}
-      {currentUser && (
+      {/* {currentUser && (
         <Icon
           reverse
           type="material-community"
@@ -66,7 +66,7 @@ export function RestaurantsScreen(props) {
           containerStyle={styles.btnContainer}
           onPress={goToAddRestaurant}
         />
-      )}
+      )} */}
     </View>
   );
 }

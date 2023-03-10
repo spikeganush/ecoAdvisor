@@ -3,3 +3,4 @@ export * from "./Info";
 export * from "./EcoInfo";
 export * from "./BtnReviewForm";
 export * from "./Reviews";
+export * from "./BtnFavorite";

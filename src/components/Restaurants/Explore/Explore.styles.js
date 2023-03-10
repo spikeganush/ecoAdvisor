@@ -73,6 +73,7 @@ export const styles = StyleSheet.create({
     height: CARD_HEIGHT,
     width: CARD_WIDTH,
     overflow: "hidden",
+    borderRadius: 20,
   },
 
   cardImage: {
@@ -88,6 +89,11 @@ export const styles = StyleSheet.create({
   textContent: {
     flex: 2,
     padding: 10,
+  },
+  rating: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 5,
   },
   cardtitle: {
     fontSize: 12,

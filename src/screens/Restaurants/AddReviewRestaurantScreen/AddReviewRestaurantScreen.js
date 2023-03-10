@@ -62,7 +62,9 @@ export function AddReviewRestaurantScreen(props) {
       const arrayStars = map(reviews, (review) => review.data().rating);
       const rating = mean(arrayStars);
       const restaurantRef = doc(db, "restaurants", route.params.idRestaurant);
-      await updateDoc(restaurantRef, { averageRating: rating });
+      await updateDoc(restaurantRef, {
+        averageRating: rating,
+      });
       navigation.goBack();
     });
   };

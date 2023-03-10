@@ -7,7 +7,7 @@ import {
   StyleSheet,
   ScrollView,
 } from "react-native";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { styles } from "./Explore.styles";
 import {
   Text,
@@ -45,9 +45,10 @@ export function Explore(props) {
   //   SPACING_FOR_CARD_INSET
   // );
   // console.log("WIDTH", width);
-  // const theme = useTheme();
+  const theme = useTheme();
 
   const { restaurants } = props;
+  console.log("RESTAURANTS", restaurants);
   const navigation = useNavigation();
 
   const markers = restaurants.map((restaurant) => {
@@ -122,7 +123,7 @@ export function Explore(props) {
       longitudeDelta: 0.0421,
     },
   };
-  const [state, setState] = useState(initialMapState);
+  const [state, setState] = initialMapState;
   console.log("STATE", state.markers);
   let mapIndex = 0;
   let mapAnimation = new Animated.Value(0);
@@ -186,8 +187,8 @@ export function Explore(props) {
     _scrollView.current.scrollTo({ x: x, y: 0, animated: true });
   };
 
-  const _map = useRef(null);
-  const _scrollView = useRef(null);
+  const _map = React.useRef(null);
+  const _scrollView = React.useRef(null);
   return (
     <View style={styles.container}>
       <MapView
@@ -308,12 +309,7 @@ export function Explore(props) {
                 <Text numberOfLines={1} style={styles.cardtitle}>
                   {marker.name}
                 </Text>
-
-                {/* <Rating
-                  imageSize={10}
-                  readonly
-                  startingValue={marker.rating | 0}
-                /> */}
+                {/* <Rating imageSize={10} readonly startingValue={marker.rating} /> */}
               </View>
 
               <Text numberOfLines={1} style={styles.cardDescription}>

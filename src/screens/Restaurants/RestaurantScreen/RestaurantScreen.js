@@ -18,6 +18,7 @@ import {
   EcoInfo,
   BtnReviewForm,
   Reviews,
+  BtnFavorite,
 } from "../../../components/Restaurant";
 import { Carousel, Loading, Map } from "../../../components/Shared";
 const { width, height } = Dimensions.get("window");
@@ -35,17 +36,29 @@ export function RestaurantScreen(props) {
   if (!restaurant) return <Loading show text="Loading..." />;
   return (
     <ScrollView style={styles.content}>
-      <Carousel
-        arrayImages={restaurant.images}
-        height={250}
-        width={width}
-        // hideDots
-      />
+      <View
+      // style={{
+      //   borderRadius: 50,
+      //   overflow: "hidden",
+      //   // height: height / 3.5,
+      //   // width: width / 0.6,
+      //   paddingLeft: 5,
+      //   paddingRight: 5,
+      // }}
+      >
+        <Carousel
+          arrayImages={restaurant.images}
+          height={height / 3.5}
+          width={width / 0.5}
+          // hideDots
+        />
+      </View>
       <Header restaurant={restaurant} />
       <Info restaurant={restaurant} />
       <EcoInfo restaurant={restaurant} />
       <BtnReviewForm idRestaurant={route.params.id} />
       <Reviews idRestaurant={route.params.id} />
+      <BtnFavorite idRestaurant={route.params.id} />
     </ScrollView>
   );
 }

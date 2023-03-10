@@ -13,9 +13,20 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 10,
   },
+  icon: {
+    width: 25,
+    height: 25,
+    marginRight: 10,
+  },
+
   image: {
     width: 40,
     height: 40,
     marginBottom: 20,
+  },
+  img: {
+    width: 20,
+    height: 20,
+    marginRight: 10,
   },
 });

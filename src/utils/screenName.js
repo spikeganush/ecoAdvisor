@@ -27,10 +27,14 @@ const accountStack = {
   login: "Login",
   register: "Register",
 };
+const addStack = {
+  tab: "AddTab",
+};
 export const screen = {
   restaurant: restaurantStack,
   favorites: favoritesStack,
   ranking: rankingStack,
   search: searchStack,
   account: accountStack,
+  add: addStack,
 };
