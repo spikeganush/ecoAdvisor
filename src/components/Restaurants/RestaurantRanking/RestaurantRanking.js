@@ -7,9 +7,10 @@ import { screen } from "../../../utils";
 
 export function RestaurantRanking(props) {
   const { restaurant } = props;
+  const { route } = props;
+
   const navigation = useNavigation();
-  const { width } = Dimensions.get("window");
-  const { height } = Dimensions.get("window");
+  const { width, height } = Dimensions.get("window");
 
   const goToBussiness = () => {
     navigation.navigate(screen.restaurant.tab, {
@@ -24,9 +25,9 @@ export function RestaurantRanking(props) {
         <Image
           source={{ uri: restaurant.images[0] }}
           style={{
-            width: width / 2.6,
-            height: height / 9,
-            borderRadius: 25,
+            width: width / 2,
+            height: height / 6,
+            borderRadius: 15,
           }}
         />
 

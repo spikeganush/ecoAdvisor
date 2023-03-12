@@ -11,8 +11,12 @@ export const styles = StyleSheet.create({
     width: "100%",
     marginTop: 20,
   },
+  inputContainer: {
+    borderBottomColor: "#fff",
+    // borderBottomWidth: 1,
+  },
   icon: {
-    color: "#c1c1c1",
+    color: "#fff",
   },
   btnContainer: {
     marginTop: 20,
@@ -20,5 +24,6 @@ export const styles = StyleSheet.create({
   },
   btn: {
     backgroundColor: "#00a680",
+    borderRadius: 15,
   },
 });

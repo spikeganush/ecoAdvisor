@@ -32,7 +32,7 @@ export function RestaurantScreen(props) {
       setRestaurant(doc.data());
       //   console.log("Current data: ", doc.data());
     });
-  }, []);
+  }, [route.params.id]);
   if (!restaurant) return <Loading show text="Loading..." />;
   return (
     <ScrollView style={styles.content}>

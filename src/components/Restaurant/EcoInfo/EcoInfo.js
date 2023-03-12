@@ -52,31 +52,40 @@ export function EcoInfo(props) {
       action: null,
     },
   ];
-
   return (
     <View style={styles.content}>
       {/* <View style={styles.titleContainer}> */}
       <View>
-        <ListItem
-          // style={styles.listItem}
-          bottomDivider
-          onPress={() => {
-            showListInfo ? setShowListInfo(false) : setShowListInfo(true);
-          }}
-        >
-          <ListItem.Content>
-            <ListItem.Title style={styles.title}>{"Highlights"}</ListItem.Title>
-          </ListItem.Content>
-          <Icon
-            type={"material-community"}
-            name={"arrow-down-drop-circle-outline"}
-            color={"#00a680"}
-            style={styles.icon}
+        {!restaurant.menu.FullyVegan ||
+        !restaurant.FullyVegetarian ||
+        !restaurant.waste.FullyPlasticFree ||
+        !restaurant.supplier.ReusableEnergy ||
+        !restaurant.coffee.DiscountForUsingOwncupe ||
+        !restaurant.menu.LocalFood ? (
+          <ListItem
+            // style={styles.listItem}
+            bottomDivider
             onPress={() => {
               showListInfo ? setShowListInfo(false) : setShowListInfo(true);
             }}
-          />
-        </ListItem>
+          >
+            <ListItem.Content>
+              <ListItem.Title style={styles.title}>
+                {"Highlights"}
+              </ListItem.Title>
+            </ListItem.Content>
+            <Icon
+              type={"material-community"}
+              name={"arrow-down-drop-circle-outline"}
+              color={"#00a680"}
+              style={styles.icon}
+              onPress={() => {
+                showListInfo ? setShowListInfo(false) : setShowListInfo(true);
+              }}
+            />
+          </ListItem>
+        ) : null}
+
         {/* <Text
           style={styles.title}
           onPress={() => {

@@ -5,6 +5,10 @@ export const styles = StyleSheet.create({
     width: "100%",
     marginTop: 20,
   },
+  inputContainer: {
+    borderBottomColor: "#fff",
+    // borderBottomWidth: 1,
+  },
   content: {
     flex: 1,
     alignItems: "center",
@@ -12,11 +16,12 @@ export const styles = StyleSheet.create({
     marginTop: 30,
   },
   icon: {
-    color: "#c1c1c1",
+    color: "#fff",
   },
   btnContainer: {
     marginTop: 20,
     width: "95%",
+    borderRadius: 15,
   },
   btn: {
     backgroundColor: "#00a680",

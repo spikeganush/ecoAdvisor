@@ -7,7 +7,7 @@ import { RegisterForm } from "../../../components/Auth";
 
 export function RegisterScreen() {
   return (
-    <KeyboardAwareScrollView>
+    <KeyboardAwareScrollView style={styles.container}>
       <Image
         source={require("../../../../assets/img/logo.webp")}
         style={styles.image}

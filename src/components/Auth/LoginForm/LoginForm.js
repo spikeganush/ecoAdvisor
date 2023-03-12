@@ -42,6 +42,8 @@ export function LoginForm() {
       <Input
         containerStyle={styles.input}
         placeholder="Email"
+        placeholderTextColor={"#fff"}
+        inputContainerStyle={styles.inputContainer}
         onChangeText={(text) => formik.setFieldValue("email", text)}
         errorMessage={formik.errors.email}
         rightIcon={
@@ -51,6 +53,8 @@ export function LoginForm() {
       <Input
         containerStyle={styles.input}
         placeholder="Password"
+        placeholderTextColor={"#fff"}
+        inputContainerStyle={styles.inputContainer}
         secureTextEntry={showPassword ? false : true}
         onChangeText={(text) => formik.setFieldValue("password", text)}
         errorMessage={formik.errors.password}

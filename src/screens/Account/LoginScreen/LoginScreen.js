@@ -1,4 +1,4 @@
-import { View, ScrollView } from "react-native";
+import { View, ScrollView, Dimensions } from "react-native";
 import { Text, Image } from "react-native-elements";
 import React, { useState } from "react";
 import { styles } from "./LoginScreen.styles";
@@ -10,6 +10,7 @@ import { Modal } from "../../../components/Shared";
 
 export function LoginScreen() {
   const navigation = useNavigation();
+  const { height } = Dimensions.get("window");
   const goToRegister = () => {
     navigation.navigate(screen.account.register);
   };
@@ -17,7 +18,8 @@ export function LoginScreen() {
   const onCloseOpenModal = () => setShowModal((prevState) => !prevState);
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.container}>
+      {/* <View style={styles.container}> */}
       <Image
         source={require("../../../../assets/img/logo.webp")}
         style={styles.image}
@@ -40,6 +42,7 @@ export function LoginScreen() {
       <Modal show={showModal} close={onCloseOpenModal}>
         {<ForgotPassword show={showModal} close={onCloseOpenModal} />}
       </Modal>
+      {/* </View> */}
     </ScrollView>
   );
 }

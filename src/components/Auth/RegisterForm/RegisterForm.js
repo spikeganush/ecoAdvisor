@@ -46,7 +46,9 @@ export function RegisterForm() {
     <View style={styles.content}>
       <Input
         placeholder="Email"
+        placeholderTextColor={"#fff"}
         containerStyle={styles.input}
+        inputContainerStyle={styles.inputContainer}
         rightIcon={
           <Icon type="material-community" name="at" iconStyle={styles.icon} />
         }
@@ -55,7 +57,9 @@ export function RegisterForm() {
       />
       <Input
         placeholder="Password"
+        placeholderTextColor={"#fff"}
         containerStyle={styles.input}
+        inputContainerStyle={styles.inputContainer}
         secureTextEntry={showPassword ? false : true}
         rightIcon={
           <Icon
@@ -70,7 +74,9 @@ export function RegisterForm() {
       />
       <Input
         placeholder="Confirm Password"
+        placeholderTextColor={"#fff"}
         containerStyle={styles.input}
+        inputContainerStyle={styles.inputContainer}
         secureTextEntry={showRepeatPassword ? false : true}
         rightIcon={
           <Icon

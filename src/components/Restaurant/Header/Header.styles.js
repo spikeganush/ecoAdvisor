@@ -7,6 +7,19 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
+  imgContainer: {
+    paddingTop: 10,
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    // flexDirection: "column",
+    // alignItems: "space-between",
+    // // justifyContent: "space-between",
+    // // marginTop: 10,
+  },
+  img: {
+    width: 20,
+    height: 20,
+  },
   name: {
     fontSize: 20,
     fontWeight: "bold",

@@ -9,8 +9,7 @@ import { doc, deleteDoc } from "firebase/firestore";
 export function BussinessFavorites(props) {
   const { bussiness } = props;
   const navigation = useNavigation();
-  const { width } = Dimensions.get("window");
-  const { height } = Dimensions.get("window");
+  const { width, height } = Dimensions.get("window");
 
   const goToBussiness = () => {
     navigation.navigate(screen.restaurant.tab, {
