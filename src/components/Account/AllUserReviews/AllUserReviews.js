@@ -81,7 +81,7 @@ export function AllUserReviews(props) {
   //   console.log("FILTERREVIEWSLOGCHANGED", size(filterReviews));
   // }, [reviews]);
 
-  const getReviews = async () => {
+  const getUserReviews = async () => {
     try {
       const q = query(
         collection(db, 'reviews'),
@@ -103,7 +103,7 @@ export function AllUserReviews(props) {
   // When the reviews page is focus call the reviews function
   useFocusEffect(
     useCallback(() => {
-      getReviews();
+      getUserReviews();
     }, [])
   );
 
@@ -185,19 +185,8 @@ export function AllUserReviews(props) {
     try {
       if (id) {
         await deleteDoc(doc(db, 'reviews', id));
-        await getReviews();
+        await getUserReviews();
       }
-      //   const newReviews = filterReviews.filter((review) => review.id !== id);
-      //   setFilterReviews(newReviews);
-
-      //   setSelected(stars);
-      //   setRating(rating);
-      //   if (rating === 0) {
-      //     setSelected(stars);
-      //     if (size(filterReviews) === 0) {
-      //       setReviews([]);
-      //     }
-      //   }
       console.log('Document successfully deleted!');
     } catch (error) {
       console.log('Error removing document: ', error);
