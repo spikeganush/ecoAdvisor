@@ -21,11 +21,13 @@ import {
   orderBy,
   deleteDoc,
   getDocs,
+  getDoc,
 } from 'firebase/firestore';
 import { db } from '../../../utils';
 import { map, size } from 'lodash';
 import { Loading } from '../../../components/Shared';
 import { useFocusEffect } from '@react-navigation/core';
+import { updateRestaurant } from '../../../utils/generalUtilities';
 
 export function AllUserReviews(props) {
   const { userId, haslogged } = props;
@@ -184,7 +186,10 @@ export function AllUserReviews(props) {
     console.log('Delete id: ', id);
     try {
       if (id) {
+        const getReview = await getDoc(doc(db, 'reviews', id));
+        const review = getReview.data();
         await deleteDoc(doc(db, 'reviews', id));
+        await updateRestaurant(review.idRestaurant);
         await getUserReviews();
       }
       console.log('Document successfully deleted!');

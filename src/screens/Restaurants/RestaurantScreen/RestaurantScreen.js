@@ -27,7 +27,6 @@ const { width, height } = Dimensions.get('window');
 
 export function RestaurantScreen(props) {
   const { route } = props;
-  console.log('route', route);
   const [restaurant, setRestaurant] = useState(null);
   const [allReviews, setAllReviews] = useState([]);
   const [userReview, setUserReview] = useState([]);
@@ -62,12 +61,9 @@ export function RestaurantScreen(props) {
     }
   };
 
-  useEffect(() => {
-    getRestaurantData();
-  }, [route.params.id]);
-
   useFocusEffect(
     useCallback(() => {
+      getRestaurantData();
       getReviews();
     }, [])
   );
