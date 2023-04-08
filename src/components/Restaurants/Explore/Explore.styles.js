@@ -1,12 +1,13 @@
 import { StyleSheet } from "react-native";
 import {
+  width,
   MARGIN,
   CARD_WIDTH,
   CARD_HEIGHT,
   HEIGHT,
   SPACING_FOR_CARD_INSET,
 } from "../../../screens/Restaurants/RestaurantsScreen";
-import { width } from "../../../screens/Restaurants/RestaurantsScreen";
+// import { width } from "../../../screens/Restaurants/RestaurantsScreen";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -18,7 +19,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "#fff",
     width: "90%",
     alignSelf: "center",
-    borderRadius: 5,
+    borderRadius: 15,
     padding: 10,
     shadowColor: "#ccc",
     shadowOffset: { width: 0, height: 3 },
@@ -26,10 +27,26 @@ export const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 10,
   },
+  searchBoxPrueba: {
+    position: "absolute",
+    // marginTop: Platform.OS === "ios" ? 40 : 20,
+    // flexDirection: "row",
+    // backgroundColor: "#fff",
+    width: "90%",
+    alignSelf: "center",
+    // borderRadius: 15,
+    // padding: 10,
+    // shadowColor: "#ccc",
+    // shadowOffset: { width: 0, height: 3 },
+    // shadowOpacity: 0.5,
+    // shadowRadius: 5,
+    // elevation: 10,
+  },
   chipsScrollView: {
     position: "absolute",
-    top: Platform.OS === "ios" ? 90 : 80,
+    // top: Platform.OS === "ios" ? 30 : 20,
     paddingHorizontal: 10,
+    paddingTop: 10,
   },
   chipsIcon: {
     marginRight: 5,
@@ -77,9 +94,11 @@ export const styles = StyleSheet.create({
   },
 
   cardImage: {
-    flex: 3,
+    // flex: 3,
+    height: CARD_HEIGHT / 2,
+    // width: CARD_WIDTH,
     width: "100%",
-    height: "100%",
+    height: "50%",
     alignSelf: "center",
   },
   img: {
@@ -87,7 +106,9 @@ export const styles = StyleSheet.create({
     height: "100%",
   },
   textContent: {
-    flex: 2,
+    // height: CARD_HEIGHT / 2,
+    // height: "50%",
+    // flex: 2,
     padding: 10,
   },
   rating: {

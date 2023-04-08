@@ -1,6 +1,6 @@
-import { StyleSheet } from "react-native-web";
+import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
-  comtent: {
+  content: {
     alignItems: "center",
     paddingVertical: 10,
   },

@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { styles } from "./Info.styles";
 import { Text, ListItem, Icon } from "react-native-elements";
 import { map } from "lodash";
@@ -8,6 +8,7 @@ import { Map } from "../../Shared";
 export function Info(props) {
   const { restaurant } = props;
   console.log("fullyVegan", restaurant.menu.VeganOptions);
+
   const listInfo = [
     {
       text: `${restaurant.address}`,

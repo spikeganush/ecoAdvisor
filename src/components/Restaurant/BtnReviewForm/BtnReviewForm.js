@@ -10,7 +10,7 @@ import { db } from "../../../utils";
 import { size } from "lodash";
 
 export function BtnReviewForm(props) {
-  const { idRestaurant } = props;
+  const { idRestaurant, restaurantName } = props;
   const [haslogged, setHasLogged] = useState(false);
   const [hasReview, setHasReview] = useState(false);
   const navigation = useNavigation();
@@ -43,6 +43,7 @@ export function BtnReviewForm(props) {
   const goToAddReview = () => {
     navigation.navigate(screen.restaurant.addReviewRestaurant, {
       idRestaurant,
+      restaurantName,
     });
   };
 

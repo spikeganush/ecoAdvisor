@@ -18,12 +18,15 @@ export const styles = StyleSheet.create({
   icon: {
     color: "#fff",
   },
+  btnTitle: {
+    color: "rgba(255, 255, 255, 1)",
+  },
   btnContainer: {
     marginTop: 20,
     width: "95%",
   },
   btn: {
-    backgroundColor: "#00a680",
+    backgroundColor: "rgba(255, 255, 255, 0.45)",
     borderRadius: 15,
   },
 });

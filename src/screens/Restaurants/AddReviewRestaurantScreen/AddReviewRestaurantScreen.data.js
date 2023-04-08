@@ -4,7 +4,7 @@ export function initialValues() {
   return {
     title: "",
     comment: "",
-    rating: 3,
+    rating: 1,
   };
 }
 export function validationSchema() {

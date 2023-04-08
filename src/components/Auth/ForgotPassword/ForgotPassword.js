@@ -40,7 +40,7 @@ export function ForgotPassword(props) {
     },
   });
   return (
-    <View style={styles.comtent}>
+    <View style={styles.content}>
       <Input
         placeholder="Email"
         containerStyle={styles.input}

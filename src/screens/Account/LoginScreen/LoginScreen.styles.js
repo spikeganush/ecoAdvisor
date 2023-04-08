@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
 
   image: {
     resizeMode: "contain",
-    width: "100%",
+    width: "90%",
     height: 150,
     marginTop: 20,
   },
@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   btnRegister: {
-    color: "#00a680",
+    color: "#f9dc9b",
     fontWeight: "bold",
   },
 });

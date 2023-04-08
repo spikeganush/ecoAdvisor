@@ -8,6 +8,7 @@ const restaurantStack = {
   shopTypeForm: "ShopTypeForm",
   restaurant: "Restaurant",
   addReviewRestaurant: "AddReviewRestaurant",
+  reviewsRestaurant: "ReviewsRestaurant",
 };
 const favoritesStack = {
   tab: "FavoritesTab",
@@ -29,6 +30,7 @@ const accountStack = {
 };
 const addStack = {
   tab: "AddTab",
+  add: "Add",
 };
 export const screen = {
   restaurant: restaurantStack,

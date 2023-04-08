@@ -69,6 +69,7 @@ export function LoginForm() {
       />
       <Button
         title="Login"
+        titleStyle={styles.btnTitle}
         containerStyle={styles.btnContainer}
         buttonStyle={styles.btn}
         onPress={formik.handleSubmit}

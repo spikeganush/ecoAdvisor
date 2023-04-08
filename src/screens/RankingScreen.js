@@ -1,37 +1,37 @@
 import React, { useState, useEffect } from "react";
-import { View, Text } from "react-native";
-import {
-  doc,
-  collection,
-  getDocs,
-  query,
-  where,
-  getDoc,
-  onSnapshot,
-  orderBy,
-  limit,
-} from "firebase/firestore";
-import { db } from "../utils";
-import { size, map } from "lodash";
+import { View, Text, FlatList } from "react-native";
+import { ListItem, Button } from "react-native-elements";
 
 export function RankingScreen() {
   const [restaurants, setRestaurants] = useState(null);
-  console.log("business", size(restaurants));
 
-  console.log("restaurants", restaurants);
-  useEffect(() => {
-    const q = query(
-      collection(db, "restaurants"),
-      orderBy("averageRating", "desc"),
-      limit(5)
-    );
-    onSnapshot(q, (snapshot) => {
-      setRestaurants(snapshot.docs);
-    });
-  }, []);
   return (
-    <View>
-      <Text>RankingScreen</Text>
-    </View>
+    <ListItem.Swipeable
+      bottomDivider
+      // containerStyle={styles.container}
+      rightContent={
+        <Button
+          title="Delete"
+          icon={{ type: "material-community", name: "trash-can" }}
+          buttonStyle={{
+            minHeight: "100%",
+            backgroundColor: "red",
+          }}
+          onPress={() => console.log("Delete")}
+        />
+      }
+    >
+      {/* <Avatar
+        size="large"
+        rounded
+        source={{ uri: item.images[0] }}
+        containerStyle={styles.image}
+      /> */}
+      <ListItem.Content>
+        <ListItem.Title>titulo</ListItem.Title>
+        <ListItem.Subtitle>adress</ListItem.Subtitle>
+      </ListItem.Content>
+      <ListItem.Chevron />
+    </ListItem.Swipeable>
   );
 }

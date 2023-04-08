@@ -8,7 +8,7 @@ import { ChangeEmailForm } from "./ChangeEmailForm";
 import { ChangePasswordForm } from "./ChangePasswordForm";
 
 export function AccountOptions(props) {
-  console.log(props);
+  // console.log(props);
   const { onReload } = props;
 
   const [showModal, setShowModal] = useState(false);

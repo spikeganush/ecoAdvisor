@@ -25,12 +25,15 @@ const { width, height } = Dimensions.get("window");
 
 export function RestaurantScreen(props) {
   const { route } = props;
+  console.log("route", route);
   const [restaurant, setRestaurant] = useState(null);
+
   useEffect(() => {
     setRestaurant(null);
     onSnapshot(doc(db, "restaurants", route.params.id), (doc) => {
       setRestaurant(doc.data());
       //   console.log("Current data: ", doc.data());
+      // console.log("Current data: ", restaurant.name);
     });
   }, [route.params.id]);
   if (!restaurant) return <Loading show text="Loading..." />;
@@ -56,7 +59,10 @@ export function RestaurantScreen(props) {
       <Header restaurant={restaurant} />
       <Info restaurant={restaurant} />
       <EcoInfo restaurant={restaurant} />
-      <BtnReviewForm idRestaurant={route.params.id} />
+      <BtnReviewForm
+        idRestaurant={route.params.id}
+        restaurantName={restaurant.name}
+      />
       <Reviews idRestaurant={route.params.id} />
       <BtnFavorite idRestaurant={route.params.id} />
     </ScrollView>

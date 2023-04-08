@@ -6,48 +6,48 @@ import { map } from "lodash";
 export function EcoInfo(props) {
   const { restaurant } = props;
   const [showListInfo, setShowListInfo] = useState(false);
-  console.log("fullyVegan", restaurant.menu.VeganOptions);
+  // console.log("fullyVegan", restaurant.menu.VeganOptions);
 
   const listInfo = [
     !restaurant.coffee.DiscountForUsingOwncupe && {
       text: "Discount for using own cup",
-      leftIconName: "coffee",
-      iconType: "material-community",
+      // leftIconName: "coffee",
+      // iconType: "material-community",
       img: require("../../../../assets/img/discount-cup.png"),
       action: null,
     },
     !restaurant.menu.FullyVegan && {
       text: "Fully Vegan",
-      leftIconName: "food",
-      iconType: "material-community",
+      // leftIconName: "food",
+      // iconType: "material-community",
       img: require("../../../../assets/img/fully-vegan.png"),
       action: null,
     },
     !restaurant.menu.FullyVegetarian && {
       text: "Fully Vegetarian",
-      leftIconName: "food",
-      iconType: "material-community",
+      // leftIconName: "food",
+      // iconType: "material-community",
       img: require("../../../../assets/img/fully-vegetarian.png"),
       action: null,
     },
     !restaurant.menu.LocalFood && {
       text: "Local Food",
-      leftIconName: "food",
-      iconType: "material-community",
+      // leftIconName: "food",
+      // iconType: "material-community",
       img: require("../../../../assets/img/local-food.png"),
       action: null,
     },
     !restaurant.waste.FullyPlasticFree && {
       text: "Fully Plastic Free",
-      leftIconName: "food",
-      iconType: "material-community",
+      // leftIconName: "food",
+      // iconType: "material-community",
       img: require("../../../../assets/img/no-plastic.png"),
       action: null,
     },
     !restaurant.supplier.ReusableEnergy && {
       text: "Reusable Energy",
-      leftIconName: "food",
-      iconType: "material-community",
+      // leftIconName: "food",
+      // iconType: "material-community",
       img: require("../../../../assets/img/renewable-energy.png"),
       action: null,
     },

@@ -27,8 +27,8 @@ import {
   CARD_HEIGHT,
   HEIGHT,
   SPACING_FOR_CARD_INSET,
+  width,
 } from "../../../screens/Restaurants/RestaurantsScreen";
-import { width } from "../../../screens/Restaurants/RestaurantsScreen";
 export function ListRestaurants(props) {
   console.log(
     "DIMENSIONS",

@@ -24,16 +24,19 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import Fontisto from "react-native-vector-icons/Fontisto";
 
 import * as Location from "expo-location";
-import {
-  MARGIN,
-  CARD_WIDTH,
-  CARD_HEIGHT,
-  HEIGHT,
-  SPACING_FOR_CARD_INSET,
-} from "../../../screens/Restaurants/RestaurantsScreen";
-import { width } from "../../../screens/Restaurants/RestaurantsScreen";
+// import {
+//   width,
+//   height,
+//   MARGIN,
+//   CARD_WIDTH,
+//   CARD_HEIGHT,
+//   HEIGHT,
+//   SPACING_FOR_CARD_INSET,
+// } from "../../../screens/Restaurants/RestaurantsScreen";
+// import { width } from "../../../screens/Restaurants/RestaurantsScreen";
 import { useNavigation, useTheme } from "@react-navigation/native";
 import { screen } from "../../../utils";
+// import { SearchBarExplore } from "../SearchBarExplore";
 
 export function Explore(props) {
   // console.log(
@@ -47,21 +50,30 @@ export function Explore(props) {
   // console.log("WIDTH", width);
   // const theme = useTheme();
 
-  const { restaurants } = props;
+  const {
+    restaurants,
+    CARD_HEIGHT,
+    CARD_WIDTH,
+    MARGIN,
+    SPACING_FOR_CARD_INSET,
+    HEIGHT,
+    width,
+  } = props;
+  // console.log("PROPS", props);
   const navigation = useNavigation();
 
   const markers = restaurants.map((restaurant) => {
     return {
       coordinate: {
-        latitude: restaurant.data().location.latitude,
-        longitude: restaurant.data().location.longitude,
+        latitude: restaurant.location.latitude,
+        longitude: restaurant.location.longitude,
       },
-      name: restaurant.data().name,
-      description: restaurant.data().description,
-      image: restaurant.data().images[0],
-      address: restaurant.data().address,
+      name: restaurant.name,
+      description: restaurant.description,
+      image: restaurant.images[0],
+      address: restaurant.address,
       id: restaurant.id,
-      rating: restaurant.data().averageRating,
+      rating: restaurant.averageRating,
     };
   });
 
@@ -129,6 +141,12 @@ export function Explore(props) {
 
   const goToDetails = (restaurant) => {
     navigation.navigate(screen.restaurant.restaurant, { id: restaurant.id });
+    // navigation.navigate(screen.restaurant.tab, {
+    //   screen: screen.restaurant.restaurant,
+    //   params: {
+    //     id: restaurant.id,
+    //   },
+    // });
   };
   useEffect(() => {
     mapAnimation.addListener(({ value }) => {
@@ -213,7 +231,7 @@ export function Explore(props) {
             >
               <Animated.View style={[styles.markerWrap]}>
                 <Animated.Image
-                  source={require("../../../../assets/img/suMLIqqc.png/")}
+                  source={require("../../../../assets/img/matti-ecoadvisor263.png/")}
                   style={[styles.marker, scaleStyle]}
                   resizeMode="cover"
                 />
@@ -222,15 +240,34 @@ export function Explore(props) {
           );
         })}
       </MapView>
-      <View style={styles.searchBox}>
-        <TextInput
+      {/* <View style={styles.searchBox}> */}
+      {/* <TextInput
           placeholder="Search here"
           placeholderTextColor="#000"
           autoCapitalize="none"
-          style={{ flex: 1, padding: 0 }}
+          style={{ flex: 1, padding: 1 }}
         />
         <Ionicons name="ios-search" size={20} />
-      </View>
+        {/* <SearchBar
+          containerStyle={{
+            // position: "relative",
+            borderBottomColor: "transparent",
+            borderTopColor: "transparent",
+            backgroundColor: "transparent",
+          }}
+          inputContainerStyle={{
+            backgroundColor: "#fff",
+            width: "90%",
+            height: 35,
+            alignSelf: "center",
+
+            borderWidth: 1,
+            borderBottomWidth: 1,
+          }}
+          round
+          placeholder="Search"
+        /> */}
+      {/* </View> */}
       <ScrollView
         horizontal
         scrollEventThrottle={1}
@@ -263,6 +300,7 @@ export function Explore(props) {
         showsHorizontalScrollIndicator={false}
         snapToInterval={CARD_WIDTH + 20}
         snapToAlignment="center"
+        decelerationRate={10}
         style={styles.scrollView}
         contentInset={{
           top: 0,
@@ -288,12 +326,30 @@ export function Explore(props) {
         )}
       >
         {state.markers.map((marker, index) => (
-          <View style={styles.card} key={index}>
+          <View
+            style={{
+              flex: 1,
+              elevation: 2,
+              backgroundColor: "#FFF",
+              borderTopLeftRadius: 20,
+              borderTopRightRadius: 20,
+              marginHorizontal: 10,
+              shadowColor: "#000",
+              shadowRadius: 5,
+              shadowOpacity: 0.3,
+              shadowOffset: { x: 2, y: -2 },
+              height: CARD_HEIGHT,
+              width: CARD_WIDTH,
+              overflow: "hidden",
+              borderRadius: 20,
+            }}
+            key={index}
+          >
             <View style={styles.cardImage} key={index}>
               <Image
                 // style={{ width: "100%", height: "100%" }}
                 style={styles.img}
-                //if there is marker.image, use it, otherwise use the default image from the assets
+                // if there is marker.image, use it, otherwise use the default image from the assets
                 source={
                   marker.image
                     ? { uri: marker.image }
@@ -329,6 +385,7 @@ export function Explore(props) {
                   style={[
                     styles.signIn,
                     {
+                      borderRadius: 15,
                       borderColor: "#FF6347",
                       borderWidth: 1,
                     },

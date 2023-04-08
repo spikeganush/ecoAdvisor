@@ -9,6 +9,7 @@ import {
 } from "./AddReviewRestaurantScreen.data";
 import { Toast } from "react-native-toast-message";
 import { getAuth } from "firebase/auth";
+import { screen } from "../../../utils";
 import {
   doc,
   setDoc,
@@ -24,10 +25,12 @@ import { map, mean } from "lodash";
 import { useNavigation } from "@react-navigation/native";
 export function AddReviewRestaurantScreen(props) {
   const { route } = props;
+
+  console.log("route", route.params.restaurantName);
   const navigation = useNavigation();
   const formik = useFormik({
-    initialValues: initialValues,
-    validationSchema: validationSchema,
+    initialValues: initialValues(),
+    validationSchema: validationSchema(),
     validateOnChange: false,
     onSubmit: async (formValue) => {
       try {
@@ -37,12 +40,13 @@ export function AddReviewRestaurantScreen(props) {
         newData.id = idDoc;
         newData.userName = auth.currentUser.displayName;
         newData.idRestaurant = route.params.idRestaurant;
+        newData.restaurantName = route.params.restaurantName;
         newData.idUser = auth.currentUser.uid;
         newData.avatar = auth.currentUser.photoURL;
         newData.createdAt = new Date();
         await setDoc(doc(db, "reviews", idDoc), newData);
         await updateRestaurant();
-        console.log("Document successfully written!");
+        console.log("Document successfully written!", newData);
       } catch (error) {
         Toast.show({
           type: "error",
@@ -52,6 +56,8 @@ export function AddReviewRestaurantScreen(props) {
       }
     },
   });
+  console.log("rating", formik.values.rating);
+  console.log("title", formik.values.title);
   const updateRestaurant = async (idRestaurant, rating) => {
     const q = query(
       collection(db, "reviews"),
@@ -65,7 +71,10 @@ export function AddReviewRestaurantScreen(props) {
       await updateDoc(restaurantRef, {
         averageRating: rating,
       });
-      navigation.goBack();
+      // navigation.goBack();
+      navigation.navigate(screen.restaurant.restaurant, {
+        id: route.params.idRestaurant,
+      });
     });
   };
 

@@ -7,7 +7,7 @@ export function AddStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name={screen.add.tab}
+        name={screen.add.add}
         component={AddRestaurantScreen}
         options={{ title: "Add a new bussiness" }}
       />

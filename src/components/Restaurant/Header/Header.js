@@ -10,10 +10,10 @@ export function Header(props) {
       img: require("../../../../assets/img/discount-cup.png"),
       action: null,
     },
-    !restaurant.menu.FullyVegan && {
-      img: require("../../../../assets/img/fully-vegan.png"),
-      action: null,
-    },
+    // !restaurant.menu.FullyVegan && {
+    //   img: require("../../../../assets/img/fully-vegan.png"),
+    //   action: null,
+    // },
     !restaurant.menu.FullyVegetarian && {
       img: require("../../../../assets/img/fully-vegetarian.png"),
       action: null,
@@ -28,6 +28,10 @@ export function Header(props) {
     },
     !restaurant.supplier.ReusableEnergy && {
       img: require("../../../../assets/img/renewable-energy.png"),
+      action: null,
+    },
+    !restaurant.menu.FullyVegan && {
+      img: require("../../../../assets/img/fully-vegan.png"),
       action: null,
     },
   ];

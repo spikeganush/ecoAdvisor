@@ -2,8 +2,9 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   content: {
     backgroundColor: "#fff",
+    marginTop: 0,
     marginVertical: 10,
-    marginHorizontal: 15,
+    marginHorizontal: 2,
   },
   img: {
     width: "100%",
@@ -38,5 +39,18 @@ export const styles = StyleSheet.create({
     borderBottomLeftRadius: 100,
     padding: 5,
     paddingLeft: 15,
+  },
+  imgContainer: {
+    paddingTop: 15,
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    // flexDirection: "column",
+    // alignItems: "space-between",
+    // // justifyContent: "space-between",
+    // // marginTop: 10,
+  },
+  images: {
+    width: 20,
+    height: 20,
   },
 });

@@ -16,10 +16,12 @@ import {
 } from "firebase/firestore";
 import { db, screen } from "../../../utils";
 import { useNavigation, CommonActions } from "@react-navigation/native";
+import { async } from "@firebase/util";
 export function InfoUser(props) {
   const { setLoading, setLoadingText } = props;
   const { uid, photoURL, displayName, email } = getAuth().currentUser;
   const [avatar, setAvatar] = useState(photoURL);
+  const [name, setName] = useState(displayName);
   const navigation = useNavigation();
 
   const resetRestaurantStackNavigation = () => {
@@ -44,22 +46,60 @@ export function InfoUser(props) {
   };
 
   //useeffetc everytime the user changes the avatar it will update the avatar in the reviews collection
-  useEffect(() => {
+  // useEffect(() => {
+  //   const q = query(
+  //     collection(db, "reviews"),
+  //     where("idUser", "==", uid)
+  //     // orderBy("createdAt", "desc")
+  //   );
+
+  //   if (q == !undefined) {
+  //     onSnapshot(q, async (snapshot) => {
+  //       snapshot.docs.forEach(async (docs) => {
+  //         const reviews = snapshot.docs;
+  //         const reviewRef = doc(db, "reviews", reviews.id);
+  //         await updateDoc(reviewRef, { avatar: avatar });
+  //       });
+
+  //       //reload RestaurantScreen reviews to update the avatar in the reviews list of the restaurant screen when the user changes the avatar in the account screen and goes back to the restaurant screen without reloading the restaurant screen manually (this is to avoid the user to reload the restaurant screen manually)
+
+  //       // props.reloadRestaurantScreen();
+  //     });
+  //   } else {
+  //     console.log("No hay reviews");
+  //   }
+  // }, [avatar]);
+  // // }
+  // // }, []);
+
+  const changeReviewAvatar = () => {
     const q = query(
       collection(db, "reviews"),
       where("idUser", "==", uid)
       // orderBy("createdAt", "desc")
     );
+    if (q == !undefined) {
+      onSnapshot(q, async (snapshot) => {
+        snapshot.docs.forEach(async (docs) => {
+          const reviews = snapshot.docs;
+          const reviewRef = doc(db, "reviews", reviews.id);
+          await updateDoc(reviewRef, { avatar: avatar });
+        });
+      });
+    } else {
+      console.log("No hay reviews");
+    }
+  };
 
-    onSnapshot(q, async (snapshot) => {
-      const reviews = snapshot.docs;
-      const reviewRef = doc(db, "reviews", reviews[0].id);
-      await updateDoc(reviewRef, { avatar: avatar });
-      //reload RestaurantScreen reviews to update the avatar in the reviews list of the restaurant screen when the user changes the avatar in the account screen and goes back to the restaurant screen without reloading the restaurant screen manually (this is to avoid the user to reload the restaurant screen manually)
+  // console.log("REVIEW", review);
 
-      // props.reloadRestaurantScreen();
-    });
-  }, []);
+  // setName(data);
+  // name.forEach((element) => {
+  //   console.log("ELEMENT", element);
+  // });
+  // });
+  //   console.log("NAME", name);
+  // };
 
   //Cogiendo el avatar de la galeria
   const changeAvatar = async () => {
@@ -92,10 +132,10 @@ export function InfoUser(props) {
     const storage = getStorage();
     const imageRef = ref(storage, imagePath);
     const imageUrl = await getDownloadURL(imageRef);
-    console.log(imageUrl);
+    // console.log(imageUrl);
     const auth = getAuth();
     updateProfile(auth.currentUser, { photoURL: imageUrl });
-    console.log(auth.currentUser);
+    // console.log(auth.currentUser);
     setAvatar(imageUrl);
     resetRestaurantStackNavigation();
     setLoading(false);

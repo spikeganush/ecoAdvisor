@@ -22,7 +22,7 @@ import {
 import { RestaurantRanking } from "../../../components/Restaurants";
 import { Loading } from "../../../components/Shared";
 import { size, map } from "lodash";
-import { styles } from "../RestaurantsScreen/RestaurantsScreen.styles";
+import { styles } from "./FavoritesScreen.styles";
 
 export function FavoritesScreen() {
   const [hasLogged, setHasLogged] = useState(null);
@@ -37,7 +37,7 @@ export function FavoritesScreen() {
     onAuthStateChanged(auth, (user) => {
       setHasLogged(user ? true : false);
     });
-  }, []);
+  }, [auth]);
 
   useEffect(() => {
     if (auth?.currentUser) {
@@ -58,7 +58,7 @@ export function FavoritesScreen() {
         setBusiness(bussinesArray);
       });
     }
-  }, [auth]);
+  }, [hasLogged]);
 
   useEffect(() => {
     const q = query(
@@ -88,28 +88,15 @@ export function FavoritesScreen() {
     >
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         {map(business, (bussiness) => (
-          <BussinessFavorites key={bussiness.id} bussiness={bussiness} />
+          <BussinessFavorites
+            key={bussiness.id}
+            bussiness={bussiness}
+            style={{ marginHorizontal: 10 }}
+          />
         ))}
       </ScrollView>
-      <View
-        style={{
-          // backgroundColor: "grey",
-          paddingTop: 20,
-          paddingBottom: 1,
-          // justifyContent: "center",
-        }}
-      >
-        <Text
-          style={{
-            fontSize: 20,
-            fontWeight: "bold",
-            marginHorizontal: 15,
-            marginBottom: 1,
-            paddingBottom: 1,
-          }}
-        >
-          Top 5 Restaurants
-        </Text>
+      <View style={styles.content}>
+        <Text style={styles.title}>Top 5 Restaurants</Text>
       </View>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         {map(restaurants, (restaurant) => (

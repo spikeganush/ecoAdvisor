@@ -21,7 +21,7 @@ export function LoginScreen() {
     <ScrollView style={styles.container}>
       {/* <View style={styles.container}> */}
       <Image
-        source={require("../../../../assets/img/logo.webp")}
+        source={require("../../../../assets/img/matti-ecoadvisor26.png")}
         style={styles.image}
       />
       <View style={styles.content}>

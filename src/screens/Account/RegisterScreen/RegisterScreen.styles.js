@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
   },
   image: {
     resizeMode: "contain",
-    width: "100%",
+    width: "90%",
     height: 150,
     marginTop: 20,
   },

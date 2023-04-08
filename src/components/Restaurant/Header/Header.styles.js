@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     justifyContent: "flex-end",
     // flexDirection: "column",
     // alignItems: "space-between",
-    // // justifyContent: "space-between",
+    // justifyContent: "stretch",
     // // marginTop: 10,
   },
   img: {

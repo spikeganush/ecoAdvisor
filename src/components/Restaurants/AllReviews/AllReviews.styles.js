@@ -1,7 +1,8 @@
 import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   content: {
-    marginHorizontal: 15,
+    marginHorizontal: 10,
+    marginTop: 10,
   },
   avatarName: {
     paddingLeft: 10,
@@ -9,6 +10,8 @@ export const styles = StyleSheet.create({
   },
   review: {
     paddingVertical: 20,
+    marginTop: 5,
+    borderRadius: 10,
   },
   title: {
     fontWeight: "bold",
@@ -41,14 +44,5 @@ export const styles = StyleSheet.create({
   avatar: {
     marginRight: 20,
     backgroundColor: "green",
-  },
-  seeAll: {
-    alignItems: "center",
-    marginTop: 10,
-    marginBottom: 10,
-  },
-  text: {
-    color: "#00a680",
-    fontSize: 16,
   },
 });

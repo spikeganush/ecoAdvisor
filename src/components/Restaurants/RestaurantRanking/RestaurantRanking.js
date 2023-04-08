@@ -27,7 +27,7 @@ export function RestaurantRanking(props) {
           style={{
             width: width / 2,
             height: height / 6,
-            borderRadius: 15,
+            borderRadius: 5,
           }}
         />
 

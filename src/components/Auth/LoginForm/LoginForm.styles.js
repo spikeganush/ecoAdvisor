@@ -23,7 +23,12 @@ export const styles = StyleSheet.create({
     width: "95%",
     borderRadius: 15,
   },
+  btnTitle: {
+    color: "rgba(255, 255, 255, 1)",
+  },
   btn: {
-    backgroundColor: "#00a680",
+    backgroundColor: "rgba(255, 255, 255, 0.45)",
+    // opacity: 0.5,
+    borderRadius: 15,
   },
 });

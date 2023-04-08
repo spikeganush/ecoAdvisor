@@ -9,23 +9,15 @@ import {
   limit,
   orderBy,
   getDocs,
-  onSnapshot,
 } from "firebase/firestore";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import MapView from "react-native-maps";
-
 import { size, map } from "lodash";
 import { useNavigation } from "@react-navigation/native";
-import { Loading } from "../components/Shared";
-import { db, screen } from "../utils";
-import { SearchBarExplore } from "../components/Restaurants/SearchBarExplore";
-import { Explore } from "../components/Restaurants/Explore";
-export function SearchScreen() {
-  const [searchText, setSearchText] = useState("");
-  const [transformedText, setTransformedText] = useState("");
-  const [currentUser, setCurrentUser] = useState(null);
-  const [restaurants, setRestaurants] = useState(null);
-  const [searchResults, setSearchResults] = useState(null);
+import { Loading } from "../../../components/Shared";
+import { db, screen } from "../../../utils";
+export function SearchBarExplore(props) {
+  const { searchResults, setSearchResults, searchText, setSearchText } = props;
+  // const [searchText, setSearchText] = useState("");
+
   const autoCapitalizeText = (text) => {
     const newText = text
       .split(" ")
@@ -35,48 +27,8 @@ export function SearchScreen() {
       .join(" ");
     setSearchText(newText);
   };
-  useEffect(() => {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
-    });
-  }, []);
-  useEffect(() => {
-    const q = query(
-      collection(db, "restaurants"),
-      orderBy("createdAt", "desc")
-    );
-    // onSnapshot(q, (snapshot) => {
-    //   setRestaurants(snapshot.docs);
-    //   console.log(
-    //     "restaurants",
-    //     snapshot.docs.map((doc) => doc.data())
-    //   );
-    // });
-    onSnapshot(q, (snapshot) => {
-      const data = snapshot.docs.map((doc) => doc.data());
 
-      setRestaurants(data);
-      console.log("restaurantsNUEVOS", data);
-    });
-  }, []);
-
-  useEffect(() => {
-    (async () => {
-      const q = query(
-        collection(db, "restaurants"),
-        orderBy("name"),
-        startAt(searchText),
-        endAt(`${searchText}\uf8ff`),
-        limit(20)
-      );
-
-      const querySnapshot = await getDocs(q);
-      setSearchResults(querySnapshot.docs);
-    })();
-  }, [searchText]);
   const navigation = useNavigation();
-
   const goToRestaurant = (idRestaurant) => {
     navigation.navigate(screen.restaurant.tab, {
       screen: screen.restaurant.restaurant,
@@ -85,11 +37,29 @@ export function SearchScreen() {
       },
     });
   };
-
   return (
     <>
-      {/* <SearchBar
-        placeholder="Search"
+      <SearchBar
+        containerStyle={{
+          // position: "relative",
+          borderBottomColor: "transparent",
+          borderTopColor: "transparent",
+          backgroundColor: "#fff",
+        }}
+        inputContainerStyle={{
+          backgroundColor: "#fff",
+          width: "90%",
+          height: 25,
+          alignSelf: "center",
+
+          borderWidth: 1,
+          borderColor: "#95b53b",
+          // backgroundColor: "#95b53b",
+
+          borderBottomWidth: 1,
+        }}
+        round
+        placeholder="Explore sustainability"
         value={searchText}
         //on changetext to lower case and autocapitalize and trim spaces at the end of the string to avoid errors in the search query and to avoid the user having to press the search button to search for the restaurant name in lowercase and without spaces at the end of the string and to avoid the user having to press the search button to search for the restaurant name in lowercase and without spaces at the end of the string
         // onChangeText={(text) => setSearchText(text.toLowerCase().trim())}
@@ -125,16 +95,7 @@ export function SearchScreen() {
             })
           )}
         </ScrollView>
-      )} */}
-      <SearchBarExplore
-        searchResults={searchResults}
-        searchText={searchText}
-        setSearchResults={setSearchResults}
-        setSearchText={setSearchText}
-      />
-      {!searchText && <MapView style={{ flex: 1 }} />}
-
-      {/* <Explore restaurants={restaurants} /> */}
+      )}
     </>
   );
 }

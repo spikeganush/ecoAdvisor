@@ -3,6 +3,7 @@ import { screen } from "../utils";
 import { AccountScreen } from "../screens/Account/AccountScreen";
 import { LoginScreen } from "../screens/Account/LoginScreen/LoginScreen";
 import { RegisterScreen } from "../screens/Account/RegisterScreen";
+import { UserReviewsScreen } from "../screens/Account/UserReviewsScreen/UserReviewsScreen";
 
 const Stack = createNativeStackNavigator();
 

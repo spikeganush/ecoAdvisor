@@ -91,6 +91,7 @@ export function RegisterForm() {
       />
       <Button
         title="Register"
+        titleStyle={styles.btnTitle}
         containerStyle={styles.btnContainer}
         buttonStyle={styles.btn}
         onPress={formik.handleSubmit}

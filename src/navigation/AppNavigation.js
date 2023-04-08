@@ -1,4 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { Icon } from "react-native-elements";
 import { screen } from "../utils";
 import { RestaurantStack } from "./RestaurantStack";
@@ -8,6 +9,7 @@ import { RankingStack } from "./RankingStack";
 import { AccountStack } from "./AccountStack";
 import { AddStack } from "./AddStack";
 import { AddRestaurantScreen } from "../screens/Restaurants/AddRestaurantScreen/AddRestaurantScreen";
+import { RankingScreen } from "../screens/RankingScreen";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 // import { RankingScreen } from "../screens/RankingScreen";
@@ -16,6 +18,7 @@ import { useEffect, useState } from "react";
 // import { rankingStack } from "./RankingStack";
 
 const Tab = createBottomTabNavigator();
+const TopTab = createMaterialTopTabNavigator();
 
 export function AppNavigation() {
   const [haslogged, setHasLogged] = useState(false);
@@ -49,12 +52,12 @@ export function AppNavigation() {
         name={screen.ranking.tab}
         component={RankingStack}
         options={{ title: "Ranking" }}
-      />
-      <Tab.Screen
+      ></Tab.Screen>
+      {/* <Tab.Screen
         name={screen.search.tab}
         component={SearchStack}
         options={{ title: "Search" }}
-      />
+      />  */}
       <Tab.Screen
         name={screen.account.tab}
         component={AccountStack}

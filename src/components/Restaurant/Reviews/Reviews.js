@@ -14,10 +14,18 @@ import {
 } from "firebase/firestore";
 import { db } from "../../../utils";
 import { map } from "lodash";
+import { useNavigation } from "@react-navigation/native";
+import { screen } from "../../../utils";
+import { Loading } from "../../../components/Shared";
 
 export function Reviews(props) {
   const { idRestaurant } = props;
-
+  const navigation = useNavigation();
+  const goToDetails = (restaurant) => {
+    navigation.navigate(screen.restaurant.reviewsRestaurant, {
+      id: idRestaurant,
+    });
+  };
   const [reviews, setReviews] = useState([]);
   // const [avatar, setAvatar] = useState();
   useEffect(() => {
@@ -29,6 +37,7 @@ export function Reviews(props) {
 
     onSnapshot(q, (snapshot) => {
       setReviews(snapshot.docs);
+      console.log("idRestaurantReviews", idRestaurant);
     });
   }, []);
 
@@ -36,7 +45,7 @@ export function Reviews(props) {
 
   return (
     <View style={styles.content}>
-      {map(reviews, (review) => {
+      {map(reviews.slice(0, 3), (review) => {
         const data = review.data();
         const createReview = new Date(data.createdAt.seconds * 1000);
 
@@ -66,12 +75,34 @@ export function Reviews(props) {
                     isDisabled
                     starContainerStyle={styles.starContainer}
                   />
-                  <Text style={styles.date}>
-                    {DateTime.fromISO(createReview.toISOString()).toFormat(
-                      "yyyy/LL/dd - hh:mm"
-                    )}
-                  </Text>
 
+                  <Text style={styles.date}>
+                    {/* {DateTime.fromISO(createReview.toISOString()).toFormat(
+                      "yyyy/LL/dd - hh:mm"
+                    )} */}
+                    {/* {
+                      createReview.getDate() +
+                        "/" +
+                        createReview.getMonth({ month: "long" }) +
+                        "/" +
+                        createReview.getFullYear()
+                      // " - " +
+                      // createReview.getHours() +
+                      // ":" +
+                      // createReview.getMinutes()}
+                    } */}
+
+                    {createReview.toLocaleDateString()}
+                    {/* {createReview.toLocaleString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                      hour: "numeric",
+                      minute: "numeric",
+                      hour12: true,
+                    })} */}
+                    {/* {createReview.toDateString()} */}
+                  </Text>
                   {/* <Text style={styles.date}>"yyyy/LL/dd - hh:mm"</Text> */}
                 </View>
               </View>
@@ -79,6 +110,18 @@ export function Reviews(props) {
           </ListItem>
         );
       })}
+      {reviews.length > 0 && (
+        <View style={styles.seeAll}>
+          <Text
+            style={styles.text}
+            onPress={() => {
+              goToDetails(idRestaurant);
+            }}
+          >
+            See all
+          </Text>
+        </View>
+      )}
     </View>
   );
 }
