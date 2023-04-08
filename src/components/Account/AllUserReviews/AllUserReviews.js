@@ -73,9 +73,6 @@ export function AllUserReviews(props) {
       console.log('Error removing document: ', error);
     }
   };
-  useEffect(() => {
-    console.log('AllUserReviews useEffect');
-  }, []);
 
   // useEffect(() => {
   //   console.log("RATINGLOGCHANGED", rating);
@@ -84,31 +81,30 @@ export function AllUserReviews(props) {
   //   console.log("FILTERREVIEWSLOGCHANGED", size(filterReviews));
   // }, [reviews]);
 
+  const getReviews = async () => {
+    try {
+      const q = query(
+        collection(db, 'reviews'),
+        where('idUser', '==', userId),
+        orderBy('createdAt', 'desc')
+      );
+      const querySnapshot = await getDocs(q);
+      const docs = querySnapshot.docs.map((doc) => doc.data());
+      setReviews(docs);
+      if (size(reviews) === 0) {
+        setRating(0);
+        setSelected(stars);
+      }
+    } catch (error) {
+      console.log('Error getting document: ', error);
+    }
+  };
+
+  // When the reviews page is focus call the reviews function
   useFocusEffect(
     useCallback(() => {
-      try {
-        const q = query(
-          collection(db, 'reviews'),
-          where('idUser', '==', userId),
-          orderBy('createdAt', 'desc')
-        );
-        (async () => {
-          const querySnapshot = await getDocs(q);
-          const docs = querySnapshot.docs.map((doc) => doc.data());
-          setReviews(docs);
-        })();
-
-        // onSnapshot(q, (snapshot) => {
-        //   setReviews(snapshot.data());
-        // });
-        if (size(reviews) === 0) {
-          setRating(0);
-          setSelected(stars);
-        }
-      } catch (error) {
-        console.log('Error getting document: ', error);
-      }
-    }, [newa])
+      getReviews();
+    }, [])
   );
 
   // useEffect(() => {
@@ -185,9 +181,12 @@ export function AllUserReviews(props) {
   };
 
   const Delete = async (id) => {
+    console.log('Delete id: ', id);
     try {
-      await deleteDoc(doc(db, 'reviews', id));
-      setNewa(!newa);
+      if (id) {
+        await deleteDoc(doc(db, 'reviews', id));
+        await getReviews();
+      }
       //   const newReviews = filterReviews.filter((review) => review.id !== id);
       //   setFilterReviews(newReviews);
 
@@ -199,157 +198,162 @@ export function AllUserReviews(props) {
       //       setReviews([]);
       //     }
       //   }
-      console.log('Document successfully deleted!', rating, filterReviews);
+      console.log('Document successfully deleted!');
     } catch (error) {
       console.log('Error removing document: ', error);
     }
   };
 
   if (!reviews) return <Loading show text="Cargando" />;
-  if (size(reviews) === 0)
-    return <Text style={styles.noReviewsText}>You dont have reviews</Text>;
+
   return (
-    <View style={styles.content}>
-      {/* <ScrollView
+    <>
+      {size(reviews) === 0 ? (
+        <Text style={styles.noReviewsText}>You dont have reviews</Text>
+      ) : (
+        <View style={styles.content}>
+          {/* <ScrollView
         horizontal
         containerStyle={styles.chipsContainer}
         showsHorizontalScrollIndicator={false}
         style={styles.chips}
       > */}
 
-      <View style={styles.chipsContainer}>
-        {selected.map((star) => (
-          <Chip
-            key={star.id}
-            onPress={
-              () => updateSelected(star.id)
-              //   console.log("STAR", star.disabled);
-              //   setDisabled(!disabled);
-            }
-            // onPressOut={() => {
-            //   UpdateUnselected(star.id);
-            //   console.log("PRESSOUT", star.disabled);
-            // }}
-            // onPress={() => setDisabled(!disabled)}
-            // disabled={disabled}
-            // setDisabled={setDisabled}
-            // disabledStyle={{ backgroundColor: "#95b53b", border: 10 }}
-            // disabledTitleStyle={{ color: "white" }}
-            style={styles.chip}
-            type="solid"
-            icon={{
-              name: star.icon,
-              color: star.disabled ? 'white' : '#95b53b',
-            }}
-            buttonStyle={{
-              backgroundColor: star.disabled ? '#95b53b' : 'white',
-              border: 1,
-              borderColor: '#95b53b',
-            }}
-            titleStyle={{ color: star.disabled ? 'white' : '#95b53b' }}
-            title={star.rating}
-            // containerStyle={styles.chip}
-            // onClick={() => console.log("Pressed")}
-          />
-        ))}
-      </View>
-      <View style={styles.all}>
-        <Text
-          style={styles.all}
-          //   onPress={() => {
-          //     setSelected(stars);
-          //     // setRating(0);
-          //   }}
-          onPress={() => {
-            updateSelected(0);
-          }}
-        >
-          See all
-        </Text>
-      </View>
-      {/* </ScrollView> */}
-      <>
-        {size(filterReviews) === 0 ? (
-          <View style={{ alignItems: 'center', marginTop: 20 }}>
-            <Text style={styles.noReviewsText}>Sorry no results found</Text>
-          </View>
-        ) : (
-          map(filterReviews, (data) => {
-            const createReview = new Date(data.createdAt.seconds * 1000);
-            //filter reviews size is 0 then show no reviews
-
-            return (
-              <ListItem.Swipeable
-                rightContent={
-                  <Button
-                    title="Delete"
-                    icon={{ type: 'material-community', name: 'trash-can' }}
-                    buttonStyle={{
-                      minHeight: '100%',
-                      backgroundColor: 'red',
-                    }}
-                    // onPress={() => console.log("Delete", data.id)}
-                    // onPress={() => Delete(data.id)}
-                    // onpress delete review and check function (not implemented yet)
-                    onPress={() => {
-                      Delete(data.id);
-                      //   check();
-                    }}
-                  />
+          <View style={styles.chipsContainer}>
+            {selected.map((star) => (
+              <Chip
+                key={star.id}
+                onPress={
+                  () => updateSelected(star.id)
+                  //   console.log("STAR", star.disabled);
+                  //   setDisabled(!disabled);
                 }
-                // rightWidth="100%"
-                rightStyle={{
-                  backgroundColor: 'red',
-                  paddingVertical: 20,
-                  marginTop: 5,
-                  borderRadius: 10,
-                  //   width: "100%",
+                // onPressOut={() => {
+                //   UpdateUnselected(star.id);
+                //   console.log("PRESSOUT", star.disabled);
+                // }}
+                // onPress={() => setDisabled(!disabled)}
+                // disabled={disabled}
+                // setDisabled={setDisabled}
+                // disabledStyle={{ backgroundColor: "#95b53b", border: 10 }}
+                // disabledTitleStyle={{ color: "white" }}
+                style={styles.chip}
+                type="solid"
+                icon={{
+                  name: star.icon,
+                  color: star.disabled ? 'white' : '#95b53b',
                 }}
-                key={data.id}
-                bottomDivider
-              >
-                <View>
-                  <Avatar
-                    size={50}
-                    rounded
-                    icon={{ type: 'material', name: 'person' }}
-                    containerStyle={styles.avatar}
-                    source={{ uri: data.avatar }}
-                  />
-                  <Text style={styles.avatarName}>{data.userName}</Text>
-                </View>
+                buttonStyle={{
+                  backgroundColor: star.disabled ? '#95b53b' : 'white',
+                  border: 1,
+                  borderColor: '#95b53b',
+                }}
+                titleStyle={{ color: star.disabled ? 'white' : '#95b53b' }}
+                title={star.rating}
+                // containerStyle={styles.chip}
+                // onClick={() => console.log("Pressed")}
+              />
+            ))}
+          </View>
+          <View style={styles.all}>
+            <Text
+              style={styles.all}
+              //   onPress={() => {
+              //     setSelected(stars);
+              //     // setRating(0);
+              //   }}
+              onPress={() => {
+                updateSelected(0);
+              }}
+            >
+              See all
+            </Text>
+          </View>
+          {/* </ScrollView> */}
+          <>
+            {size(filterReviews) === 0 ? (
+              <View style={{ alignItems: 'center', marginTop: 20 }}>
+                <Text style={styles.noReviewsText}>Sorry no results found</Text>
+              </View>
+            ) : (
+              filterReviews.map((data) => {
+                const createReview = new Date(data.createdAt.seconds * 1000);
+                //filter reviews size is 0 then show no reviews
 
-                <ListItem.Content>
-                  <ListItem.Title style={styles.title}>
-                    {data.restaurantName}
-                  </ListItem.Title>
-                  <ListItem.Subtitle style={styles.subtitle}>
-                    <Text style={styles.subtitleText}>{data.title}</Text>
-                  </ListItem.Subtitle>
-                  <View style={styles.subtitle}>
-                    <Text style={styles.comment}>{data.comment}</Text>
-
-                    <View style={styles.contentRatingDate}>
-                      <AirbnbRating
-                        defaultRating={data.rating}
-                        showRating={false}
-                        size={15}
-                        isDisabled
-                        starContainerStyle={styles.starContainer}
+                return (
+                  <ListItem.Swipeable
+                    rightContent={
+                      <Button
+                        title="Delete"
+                        icon={{ type: 'material-community', name: 'trash-can' }}
+                        buttonStyle={{
+                          minHeight: '100%',
+                          backgroundColor: 'red',
+                        }}
+                        // onPress={() => console.log("Delete", data.id)}
+                        // onPress={() => Delete(data.id)}
+                        // onpress delete review and check function (not implemented yet)
+                        onPress={() => {
+                          Delete(data.id);
+                          //   check();
+                        }}
                       />
-
-                      <Text style={styles.date}>
-                        {createReview.toLocaleDateString()}
-                      </Text>
+                    }
+                    // rightWidth="100%"
+                    rightStyle={{
+                      backgroundColor: 'red',
+                      paddingVertical: 20,
+                      marginTop: 5,
+                      borderRadius: 10,
+                      //   width: "100%",
+                    }}
+                    key={data.id}
+                    bottomDivider
+                  >
+                    <View>
+                      <Avatar
+                        size={50}
+                        rounded
+                        icon={{ type: 'material', name: 'person' }}
+                        containerStyle={styles.avatar}
+                        source={{ uri: data.avatar }}
+                      />
+                      <Text style={styles.avatarName}>{data.userName}</Text>
                     </View>
-                  </View>
-                </ListItem.Content>
-                <ListItem.Chevron />
-              </ListItem.Swipeable>
-            );
-          })
-        )}
-      </>
-    </View>
+
+                    <ListItem.Content>
+                      <ListItem.Title style={styles.title}>
+                        {data.restaurantName}
+                      </ListItem.Title>
+                      <ListItem.Subtitle style={styles.subtitle}>
+                        <Text style={styles.subtitleText}>{data.title}</Text>
+                      </ListItem.Subtitle>
+                      <View style={styles.subtitle}>
+                        <Text style={styles.comment}>{data.comment}</Text>
+
+                        <View style={styles.contentRatingDate}>
+                          <AirbnbRating
+                            defaultRating={data.rating}
+                            showRating={false}
+                            size={15}
+                            isDisabled
+                            starContainerStyle={styles.starContainer}
+                          />
+
+                          <Text style={styles.date}>
+                            {createReview.toLocaleDateString()}
+                          </Text>
+                        </View>
+                      </View>
+                    </ListItem.Content>
+                    <ListItem.Chevron />
+                  </ListItem.Swipeable>
+                );
+              })
+            )}
+          </>
+        </View>
+      )}
+    </>
   );
 }
